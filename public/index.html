@@ -158,14 +158,6 @@ a{color:var(--accent)}
 .legend .v{margin-left:auto;font-family:var(--font-num);font-size:19px;font-weight:700}
 .total{display:flex;align-items:baseline;justify-content:space-between;margin-top:10px;padding-top:10px;border-top:1px solid var(--line);font-weight:600}
 .total .v{font-family:var(--font-num);font-size:30px;font-weight:700;color:var(--accent)}
-.alt{display:none}
-@supports selector(:has(a)){
-  .costwrap:has(#fee-late:checked) .early{display:none}
-  .costwrap:has(#fee-late:checked) .alt{display:inline}
-  .costwrap:has(#fee-late:checked) .c-fuel{width:33.0%!important}
-  .costwrap:has(#fee-late:checked) .c-tip{width:43.9%!important}
-  .costwrap:has(#fee-late:checked) .c-tax{width:23.1%!important}
-}
 
 /* tiles, chips, steps */
 .tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
@@ -320,7 +312,7 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
 <div class="wrap">
 
 <header class="pass" aria-label="航程">
-  <div class="top"><span>STARCRUISES · 探索星號</span><span><span class="num" style="font-size:15px">2 晚</span> · <span class="num" style="font-size:15px">v1.2</span></span></div>
+  <div class="top"><span>STARCRUISES · 探索星號</span><span><span class="num" style="font-size:15px">2 晚</span> · <span class="num" style="font-size:15px">v1.3</span></span></div>
   <div class="route">
     <div><div class="small" style="color:var(--pass-muted)">TWKEL</div><div class="code">KEL</div><div class="city">基隆 西岸旅客中心</div></div>
     <div class="mid"><svg class="ico lg"><use href="#i-ship"/></svg><span class="num" style="font-size:15px">⇄</span></div>
@@ -409,17 +401,13 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
         <label class="ck"><input type="checkbox" id="c6"><span>日圓現金 ¥10,000–20,000<small>10/12 是日本國定假日，銀行休</small></span></label>
         <label class="ck"><input type="checkbox" id="c7"><span>預留必付費用<small>自動記入房帳，下船前結清；刷卡或付現新台幣皆可；未滿 2 歲免收</small></span></label>
         <div class="costwrap card" style="background:var(--surface-2);border:0">
-          <div class="seg full needs-has" role="radiogroup" aria-label="訂位日期">
-            <input type="radio" name="fee" id="fee-early" checked><label for="fee-early">9/30 前訂位</label>
-            <input type="radio" name="fee" id="fee-late"><label for="fee-late">10/1 後新訂位</label>
-          </div>
           <div class="costbar" aria-hidden="true"><i class="c-tip" style="width:49.4%"></i><i class="c-fuel" style="width:24.7%"></i><i class="c-tax" style="width:25.9%"></i></div>
           <div class="legend">
             <div><i class="sw c-tip"></i>小費<span class="v">1,200</span></div>
-            <div><i class="sw c-fuel"></i>燃油附加費<span class="v"><span class="early">600</span><span class="alt">900</span></span></div>
+            <div><i class="sw c-fuel"></i>燃油附加費<span class="v">600</span></div>
             <div><i class="sw c-tax"></i>日本出國稅（¥3,000）<span class="v">約 630</span></div>
           </div>
-          <div class="total">每人 2 晚合計（內艙／海景）<span class="v">NT$<span class="early">2,430</span><span class="alt">2,730</span></span></div>
+          <div class="total">每人 2 晚合計（內艙／海景）<span class="v">NT$2,430</span></div>
           <p class="small muted" style="margin-top:6px">個人消費另計：付費餐廳、飲料、Wi-Fi 等</p>
         </div>
       </div>
@@ -718,7 +706,7 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
 </section>
 </main>
 
-<footer>v1.2・2026/10/05 更新・實際以船上日報 The Daily 與現場公告為準</footer>
+<footer>v1.3・2026/10/05 更新・實際以船上日報 The Daily 與現場公告為準</footer>
 </div>
 
 <script>
