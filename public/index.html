@@ -357,7 +357,7 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
 <div class="wrap">
 
 <header class="pass" aria-label="航程">
-  <div class="top"><span>STARCRUISES · 探索星號</span><span><span class="num" style="font-size:15px">2 晚</span> · <span class="num" style="font-size:15px">v2.2</span></span></div>
+  <div class="top"><span>STARCRUISES · 探索星號</span><span><span class="num" style="font-size:15px">2 晚</span> · <span class="num" style="font-size:15px">v2.3</span></span></div>
   <div class="route">
     <div><div class="small" style="color:var(--pass-muted)">TWKEL</div><div class="code">KEL</div><div class="city">基隆 西岸旅客中心</div></div>
     <div class="mid"><svg class="ico lg"><use href="#i-ship"/></svg><span class="num" style="font-size:15px">⇄</span></div>
@@ -380,11 +380,11 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
   <div class="wx-h"><b>天氣・海象</b><span id="wx-t">讀取預報中…</span></div>
   <div class="wx-grid">
     <div class="wx-c" id="wx-out"><div class="wx-d">10/11 去程<small>基隆 → 那霸</small></div><span class="wx-i"><svg class="ico lg"><use href="#i-wave"/></svg></span><div class="wx-v">–</div><span class="wx-lv">海象</span><div class="wx-s"></div></div>
-    <div class="wx-c" id="wx-nah"><div class="wx-d">10/12 那霸<small>靠港時段</small></div><span class="wx-i"><svg class="ico lg"><use href="#i-partly"/></svg></span><div class="wx-v">–</div><span class="wx-lv">天氣</span><div class="wx-s"></div></div>
+    <div class="wx-c" id="wx-nah"><div class="wx-d">10/12 那霸<small>日本氣象廳</small></div><span class="wx-i"><svg class="ico lg"><use href="#i-partly"/></svg></span><div class="wx-v">–</div><span class="wx-lv">天氣</span><div class="wx-s"></div></div>
     <div class="wx-c" id="wx-back"><div class="wx-d">10/13 回程<small>那霸 → 基隆</small></div><span class="wx-i"><svg class="ico lg"><use href="#i-wave"/></svg></span><div class="wx-v">–</div><span class="wx-lv">海象</span><div class="wx-s"></div></div>
   </div>
   <ul class="wx-tips" id="wx-tips"></ul>
-  <p class="wx-src">海象是航線沿途預估的浪高、風力；資料來自 <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a>，打開網頁自動更新。實際以船方公告為準</p>
+  <p class="wx-src">那霸天氣：<a href="https://www.jma.go.jp/bosai/forecast/#area_type=offices&amp;area_code=471000" target="_blank" rel="noopener">日本氣象廳</a>；海象：航線沿途預估的浪高、風力（<a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a>）。打開網頁自動更新，實際以船方公告為準</p>
 </section>
 
 <nav class="stations" id="stations" aria-label="章節">
@@ -411,7 +411,7 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
   <ol class="tl">
     <li class="day">10/9 週五</li>
     <li class="ev" data-at="2026-10-09T17:00:00+08:00"><span class="t tz"><span class="tw">17:00</span><span class="jp">18:00</span></span><span class="rail"><i></i></span>
-      <div class="what">線上報到截止<span>官網填寫，出發前 48 小時關閉</span></div></li>
+      <div class="what">線上報到截止<span>官網填寫；登不進去就照常現場報到</span></div></li>
     <li class="day">10/11 週日・基隆</li>
     <li class="ev" data-at="2026-10-11T13:00:00+08:00"><span class="t tz"><span class="tw">13:00</span><span class="jp">14:00</span></span><span class="rail"><i></i></span>
       <div class="what">開始報到<span class="tz">報到櫃台 <span class="tw">15:30</span><span class="jp">16:30</span> 關閉</span></div></li>
@@ -445,27 +445,44 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
       <div class="gh"><span class="badge"><svg class="ico"><use href="#i-doc"/></svg></span>證件</div>
       <div class="body">
         <label class="ck"><input type="checkbox" id="c1"><span>護照正本：到期日晚於 <b>2027/4/13</b><small>無破損、沒蓋紀念章</small></span></label>
-        <label class="ck"><input type="checkbox" id="c2"><span>護照影本 2 份<small>A4、1:1 原尺寸、清晰、單面（背面要貼上陸許可）；不可寫字、勿用回收紙；黑白即可。官方要求 1 份，多 1 份備用</small></span></label>
+        <label class="ck"><input type="checkbox" id="c2"><span>護照影本 2 份<small>A4、1:1 原尺寸、清晰、單面（背面要貼上陸許可）；不可寫字、勿用回收紙；黑白即可。手冊寫 1 份，有些旅行社要 2 份</small></span></label>
         <label class="ck"><input type="checkbox" id="c3"><span>船票<small>紙本或電子</small></span></label>
-        <label class="ck"><input type="checkbox" id="c4"><span>完成<a href="https://webcheckin.stardreamcruises.com" target="_blank" rel="noopener">線上報到</a><small>官方規定強制，10/9 17:00 截止</small></span></label>
+        <label class="ck"><input type="checkbox" id="c4"><span>完成<a href="https://webcheckin.stardreamcruises.com" target="_blank" rel="noopener">線上報到</a><small>船票寫強制，10/9 17:00 關閉；用船票的 Res#（訂位編號）＋英文姓氏登入。旅行社團體訂位可能登不進去，登不進去就照常現場報到</small></span></label>
       </div>
     </div>
 
     <div class="grp">
       <div class="gh"><span class="badge"><svg class="ico"><use href="#i-card"/></svg></span>錢</div>
       <div class="body">
-        <label class="ck"><input type="checkbox" id="c5"><span>Visa／Master 信用卡 1–2 張<small>船上不收 AE</small></span></label>
+        <label class="ck"><input type="checkbox" id="c5"><span>Visa／Master 信用卡 1–2 張<small>船上不收 AE；也可用 Apple Pay／Google Pay</small></span></label>
         <label class="ck"><input type="checkbox" id="c6"><span>日圓現金 ¥10,000–20,000<small>10/12 是日本國定假日，銀行休</small></span></label>
         <label class="ck"><input type="checkbox" id="c7"><span>預留必付費用<small>自動記入房帳，下船前結清；刷卡或付現新台幣皆可；未滿 2 歲免收</small></span></label>
         <div class="costwrap card" style="background:var(--surface-2);border:0">
-          <div class="costbar" aria-hidden="true"><i class="c-tip" style="width:49.4%"></i><i class="c-fuel" style="width:24.7%"></i><i class="c-tax" style="width:25.9%"></i></div>
-          <div class="legend">
-            <div><i class="sw c-tip"></i>小費<span class="v">1,200</span></div>
-            <div><i class="sw c-fuel"></i>燃油附加費<span class="v">600</span></div>
-            <div><i class="sw c-tax"></i>日本出國稅（¥3,000）<span class="v">約 630</span></div>
+          <div class="tabs">
+            <div class="seg full needs-has" role="radiogroup" aria-label="訂位日期">
+              <input type="radio" name="fee" id="fee-jun" class="r1" checked><label for="fee-jun">6/30 前訂位</label>
+              <input type="radio" name="fee" id="fee-sep" class="r2"><label for="fee-sep">7/1–9/30 訂位</label>
+            </div>
+            <div class="panel p1"><span class="ph">6/30 前訂位</span>
+              <div class="costbar" aria-hidden="true"><i class="c-tip" style="width:59.4%"></i><i class="c-fuel" style="width:29.7%"></i><i class="c-tax" style="width:10.9%"></i></div>
+              <div class="legend">
+                <div><i class="sw c-tip"></i>小費<span class="v">1,200</span></div>
+                <div><i class="sw c-fuel"></i>燃油附加費（每晚 300）<span class="v">600</span></div>
+                <div><i class="sw c-tax"></i>日本出國稅（¥1,000）<span class="v">約 220</span></div>
+              </div>
+              <div class="total">每人 2 晚合計（內艙／海景）<span class="v">NT$2,020</span></div>
+            </div>
+            <div class="panel p2"><span class="ph">7/1–9/30 訂位</span>
+              <div class="costbar" aria-hidden="true"><i class="c-tip" style="width:49.4%"></i><i class="c-fuel" style="width:24.7%"></i><i class="c-tax" style="width:25.9%"></i></div>
+              <div class="legend">
+                <div><i class="sw c-tip"></i>小費<span class="v">1,200</span></div>
+                <div><i class="sw c-fuel"></i>燃油附加費（每晚 300）<span class="v">600</span></div>
+                <div><i class="sw c-tax"></i>日本出國稅（¥3,000）<span class="v">約 630</span></div>
+              </div>
+              <div class="total">每人 2 晚合計（內艙／海景）<span class="v">NT$2,430</span></div>
+            </div>
           </div>
-          <div class="total">每人 2 晚合計（內艙／海景）<span class="v">NT$2,430</span></div>
-          <p class="small muted" style="margin-top:6px">個人消費另計：付費餐廳、飲料、Wi-Fi 等</p>
+          <p class="small muted" style="margin-top:6px">日本出國稅 7/1 起調高，6/30 前完成訂位並提供旅客名單的仍收 ¥1,000；實際以房帳為準。個人消費另計：付費餐廳、飲料、Wi-Fi 等</p>
         </div>
       </div>
     </div>
@@ -473,18 +490,18 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
     <div class="grp">
       <div class="gh"><span class="badge"><svg class="ico"><use href="#i-wifi"/></svg></span>網路</div>
       <div class="body">
-        <label class="ck"><input type="checkbox" id="c8"><span>出發前在台灣裝好 eSIM（那霸用）<small>麗星官方贈送，不限訂購管道；1GB、24 小時、只能上網；手機須支援 eSIM</small></span></label>
+        <label class="ck"><input type="checkbox" id="c8"><span>出發前在台灣裝好 eSIM（那霸用）<small>麗星官方贈送，不限訂購管道；1GB 數據，在日本開始用量起 24 小時；手機須支援 eSIM</small></span></label>
         <div class="esim"><span class="small muted">兌換碼</span><b id="esim">SCJK26</b><button class="btn js-only" type="button" id="copy">複製</button></div>
         <ol class="steps">
-          <li><div class="s"><h3>下載 JetFi mobile App</h3><p>在台灣、有網路時進行</p></div></li>
+          <li><div class="s"><h3>下載 JetFi eSIM App</h3><p>在台灣、有網路時進行</p></div></li>
           <li><div class="s"><h3>使用兌換碼 → 選日本</h3></div></li>
           <li><div class="s"><h3>My eSIM → 開通</h3><p>裝好先關閉這條線路</p></div></li>
           <li><div class="s"><h3>到那霸再開啟</h3><p>設為行動數據並開漫遊；靠港期間在船上也能用</p></div></li>
         </ol>
         <p class="small muted">手機不支援 eSIM：改用電信公司的日本漫遊</p>
-        <div class="sub"><svg class="ico"><use href="#i-wave"/></svg>海上：離岸後手機沒訊號</div>
+        <div class="sub"><svg class="ico"><use href="#i-wave"/></svg>海上：離岸後沒有陸地訊號</div>
         <div class="tiles">
-          <div class="tile"><span class="ic"><svg class="ico"><use href="#i-plane"/></svg></span><h3>開飛航模式</h3><p>全程開著，避免誤連海上漫遊</p></div>
+          <div class="tile"><span class="ic"><svg class="ico"><use href="#i-plane"/></svg></span><h3>開飛航模式</h3><p>全程開著、只開 Wi-Fi，避免誤連船上的海上漫遊（費用很高）</p></div>
           <div class="tile"><span class="ic"><svg class="ico"><use href="#i-wifi"/></svg></span><h3>免費內網</h3><p>連船上 Wi-Fi 看電子 The Daily、查帳；不能上外網</p></div>
           <div class="tile wide"><span class="ic"><svg class="ico"><use href="#i-card"/></svg></span><h3>付費 Wi-Fi（2 晚）</h3>
             <div style="display:grid;grid-template-columns:auto 1fr 1fr;gap:4px 12px;align-items:baseline;font-size:13px">
@@ -506,14 +523,15 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
           <div class="lot"><div class="row"><h3>兆豐產險</h3><span class="addr"><a href="https://ec.cki.com.tw/" target="_blank" rel="noopener">兆豐網路投保專區</a></span></div><p class="fee">新郵輪旅遊綜合保險 Roundtrip Cruise（方案一／二）</p></div>
           <div class="lot"><div class="row"><h3>新安東京海上產險</h3><span class="addr"><a href="https://www.luckybo.com/ship/" target="_blank" rel="noopener">吉時保</a></span></div><p class="fee">精選郵輪假期旅遊保險</p></div>
         </div>
+        <p class="small muted">投保期限：富邦幫家人投保要在出發前 5 天（台灣時間 10/6）前完成；吉時保限本人投保、18–74 歲，台灣時間 10/10 17:00 前</p>
       </div>
     </div>
 
     <div class="grp">
       <div class="gh"><span class="badge"><svg class="ico"><use href="#i-bag"/></svg></span>打包</div>
       <div class="body">
-        <label class="ck"><input type="checkbox" id="c10"><span>牙刷、牙膏、刮鬍刀、拖鞋<small>船上不提供</small></span></label>
-        <label class="ck"><input type="checkbox" id="c11"><span>萬國轉接頭、多孔 USB 充電頭<small>船上 220V，中式／英式插座</small></span></label>
+        <label class="ck"><input type="checkbox" id="c10"><span>牙刷、牙膏、拖鞋、刮鬍刀<small>船上不主動提供；刮鬍刀帶電動或拋棄式，單獨刀片禁帶</small></span></label>
+        <label class="ck"><input type="checkbox" id="c11"><span>萬國轉接頭、多孔 USB 充電頭<small>手冊：220–240V，中式＋英式插座；7F 接待處可借轉接頭</small></span></label>
         <label class="ck"><input type="checkbox" id="c12"><span>薄外套、泳衣＋罩衫、防曬、雨具、好走的鞋、上岸小背包<small>船上冷氣強</small></span></label>
         <label class="ck"><input type="checkbox" id="c13"><span>暈船藥、個人藥品<small>隨身帶，不托運</small></span></label>
         <label class="ck"><input type="checkbox" id="c14"><span>行李：2 晚建議自己提、不托運</span></label>
@@ -528,7 +546,7 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
           <span class="chip no"><s>吹風機</s></span><span class="chip no"><s>直髮器</s></span><span class="chip no"><s>熨斗</s></span>
           <span class="chip no"><s>電湯匙</s></span><span class="chip no"><s>煮水器</s></span><span class="chip no"><s>刀片</s></span>
           <span class="chip no"><s>空拍機</s></span><span class="chip no"><s>蠟燭</s></span><span class="chip no"><s>噴霧罐</s></span>
-          <span class="chip no"><s>肉類／水果／生鮮</s></span><span class="chip no"><s>不合規電子菸、加熱菸</s></span>
+          <span class="chip no"><s>肉類／水果／生鮮</s></span><span class="chip no"><s>電子菸</s></span><span class="chip no"><s>不合規加熱菸</s></span>
         </div>
         <p class="small muted">指甲剪可帶。吹風機、熱水壺房內都有。</p>
       </div>
@@ -545,13 +563,13 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
       <div><h3>台鐵區間車</h3><p>板橋站 → 基隆站</p></div>
       <div class="r"><div class="big">55–60<small>分</small></div><p class="small muted">NT$78／人</p></div></div>
     <div class="mode"><span class="ic"><svg class="ico"><use href="#i-train"/></svg></span>
-      <div><h3>台鐵自強號</h3><p>板橋站 → 基隆站</p></div>
+      <div><h3>台鐵自強號</h3><p>板橋站 → 基隆站；10/11 中午只有 12:00 一班（12:50 到）</p></div>
       <div class="r"><div class="big">50<small>分</small></div><p class="small muted">NT$121／人</p></div></div>
     <div class="mode"><span class="ic"><svg class="ico"><use href="#i-car"/></svg></span>
       <div><h3>自駕</h3><p>回程尖峰 60–90 分；油資、過路費另計</p></div>
       <div class="r"><div class="big">45–60<small>分</small></div><p class="small muted">停車見下方</p></div></div>
   </div>
-  <div class="note" style="margin-top:10px"><svg class="ico"><use href="#i-pin"/></svg><span>基隆站<b>北口</b>出站，對面就是西岸旅客中心，步行約 4 分</span></div>
+  <div class="note" style="margin-top:10px"><svg class="ico"><use href="#i-pin"/></svg><span>搭終點站是「基隆」的車（往宜蘭、花蓮的車不進基隆站）。基隆站<b>北口</b>出站，對面就是西岸旅客中心，步行約 4 分</span></div>
 
   <div class="sub"><svg class="ico"><use href="#i-car"/></svg>自駕停車・10/11 13:00 停到 10/13 約 17:30</div>
   <div class="park">
@@ -561,8 +579,8 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
       <div class="walk"><span class="bar"><i style="width:58%"></i></span><span><b class="num" style="font-size:17px">550 m</b> 約 7 分</span></div>
     </div>
     <div class="lot">
-      <div class="row"><h3><a href="https://www.google.com/maps/search/?api=1&amp;query=%E6%AD%A3%E5%A5%BD%E5%81%9C%20%E5%9F%BA%E9%9A%86%E5%8D%97%E7%AB%99%E5%81%9C%E8%BB%8A%E5%A0%B4" target="_blank" rel="noopener">正好停 基隆南站停車場</a></h3><span class="big" style="font-size:22px"><small style="margin:0 3px 0 0">約</small>600</span></div>
-      <span class="addr">孝四路 10 號・NT$30／小時，每日最高 NT$200</span>
+      <div class="row"><h3><a href="https://www.google.com/maps/search/?api=1&amp;query=%E6%AD%A3%E5%A5%BD%E5%81%9C%20%E5%9F%BA%E9%9A%86%E5%8D%97%E7%AB%99%E5%81%9C%E8%BB%8A%E5%A0%B4" target="_blank" rel="noopener">正好停 基隆南站停車場</a></h3><span class="big" style="font-size:17px">未確認</span></div>
+      <span class="addr">孝四路 10 號・港務網頁寫 NT$30／小時、每日最高 NT$200，但 2026 年換過業者，可能已調漲；出發前打 (02)2799-5657 確認</span>
       <div class="walk"><span class="bar"><i style="width:58%"></i></span><span><b class="num" style="font-size:17px">550 m</b> 約 7 分</span></div>
     </div>
     <div class="lot">
@@ -581,11 +599,11 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
     <li><div class="s"><h3>1F 托運<span class="tag">可不托運</span></h3><p>不托運就直接上 2F 報到，自己提行李通關</p>
       <ul><li>每人行李最多 2 件、合計 ≤50 kg（含自己提的），且要放得進艙房</li><li>托運只收硬殼、不收軟袋；可一人代表托運多件</li><li>行李條保留到下船完畢、不要拆，收據留著</li><li>貴重物品、重要藥品、重要文件、易碎品不托運</li></ul></div></li>
     <li><div class="s"><h3>2F 報到</h3><p>出示護照正本、影本、船票</p>
-      <ul><li>領行李託運條、船卡（房卡）、日本海關申報單、日本入境卡；遺失不補發</li><li>當場檢查船卡上的英文名字，有誤立刻請碼頭人員更正</li><li>船卡每人一張：房卡、身分證明、餐廳通行證、消費記帳卡；掛繩可向櫃台索取</li></ul></div></li>
+      <ul><li>領行李託運條、船卡（房卡）、日本海關申報單、日本入境卡；遺失不補發</li><li>當場檢查船卡上的英文名字，有誤立刻請碼頭人員更正</li><li>船卡每人一張：房卡、身分證明、餐廳通行證、消費記帳卡；卡套掛繩建議自備</li></ul></div></li>
     <li><div class="s"><h3>填好日本入境卡並簽名<span class="tag">上船前</span></h3><p>上船時要連同護照交給船員</p></div></li>
     <li><div class="s"><h3>出境查驗＋安檢</h3><p>出示護照正本和船卡（可走自動通關）；隨身行李過 X 光，酒和違禁品代為保管到航程結束</p></div></li>
-    <li><div class="s"><h3><span class="time">14:00–16:00</span>分批上船</h3><p>16:00 關閘。船員收走護照正本和日本入境卡代為保管；刷船卡登船，之後每次上下船都要刷</p></div></li>
-    <li><div class="s"><h3>上船後</h3><p>內艙房間可能還沒整理好，先吃飯、逛船；到 7F 接待處綁信用卡</p></div></li>
+    <li><div class="s"><h3><span class="time">14:00–16:00</span>分批上船</h3><p>依報到時給的順序；16:00 關閘。船員收走護照正本和日本入境卡代為保管；刷船卡登船，之後每次上下船都要刷</p></div></li>
+    <li><div class="s"><h3>上船後</h3><p>內艙房間可能還沒整理好，先吃飯、逛船；要綁信用卡可到 7F 接待處（非必要）</p></div></li>
     <li><div class="s"><h3><span class="time">16:00–16:30</span>安全演習<span class="tag">強制</span></h3><p>帶船卡到集合站（印在船卡和房門上）；演習時全船服務暫停（時間為估計）</p></div></li>
     <li><div class="s"><h3>托運行李送到房門口</h3><p>上船後約 2–4 小時</p></div></li>
     <li><div class="s"><h3>填好海關申報單</h3><p>在船上填，一家一張；那霸靠岸後交給日本海關</p></div></li>
@@ -598,7 +616,7 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
   <div class="tiles">
     <div class="tile"><span class="ic"><svg class="ico"><use href="#i-clock"/></svg></span><h3>時間</h3><p>船上一律台灣時間；手機上岸會自動跳日本時間</p></div>
     <div class="tile"><span class="ic"><svg class="ico"><use href="#i-card"/></svg></span><h3>房帳</h3><p>船卡消費；房號＋生日可查帳結帳，勿外洩</p></div>
-    <div class="tile"><span class="ic"><svg class="ico"><use href="#i-food"/></svg></span><h3>免費餐廳</h3><p>不用訂位，尖峰領號碼牌；同一餐期限一間，第二間收 NT$350（早）／450（午、晚）</p></div>
+    <div class="tile"><span class="ic"><svg class="ico"><use href="#i-food"/></svg></span><h3>免費餐廳</h3><p>不用訂位，尖峰領號碼牌；同一餐期只能吃一次，第二次（換餐廳也算）收 NT$350（早）／450（午、晚）</p></div>
     <div class="tile"><span class="ic"><svg class="ico"><use href="#i-drop"/></svg></span><h3>飲水</h3><p>各樓層有飲水機，房內有熱水壺</p></div>
     <div class="tile"><span class="ic"><svg class="ico"><use href="#i-wave"/></svg></span><h3>暈船</h3><p>船齡較老，晃感明顯；7F 接待處有免費暈船藥</p></div>
     <div class="tile"><span class="ic"><svg class="ico"><use href="#i-shirt"/></svg></span><h3>穿著</h3><p>冷氣強帶外套；餐廳避免短褲、拖鞋；泳裝外加罩衫</p></div>
@@ -618,9 +636,9 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
     <div class="panel p1"><span class="ph">10/11 登船日</span>
       <ol class="plan">
         <li><span class="t">14:00</span><span class="m"><svg class="ico"><use href="#i-food"/></svg></span><div class="d"><b>上船先去免費餐廳吃</b>泳衣、藥品、充電器放隨身包，不用等行李</div></li>
-        <li><span class="t" style="font-size:15px">接著</span><span class="m"><svg class="ico"><use href="#i-ship"/></svg></span><div class="d"><b>趁人少逛船、玩泳池</b>到 7F 接待處拿郵報、領暈船藥</div></li>
+        <li><span class="t" style="font-size:15px">接著</span><span class="m"><svg class="ico"><use href="#i-ship"/></svg></span><div class="d"><b>趁人少逛船、玩泳池</b>到 7F 接待處領暈船藥</div></li>
         <li><span class="t" style="font-size:15px">預約</span><span class="m"><svg class="ico"><use href="#i-star"/></svg></span><div class="d"><b>Umi Uma 鐵板燒（付費）</b>想吃就一上船先預約</div></li>
-        <li><span class="t">17:00</span><span class="m"><svg class="ico"><use href="#i-sun"/></svg></span><div class="d"><b>甲板看出港</b>7F 悠閒大道（繞船步道）或 13F 船頭瞭望台；日落約 17:30</div></li>
+        <li><span class="t">17:00</span><span class="m"><svg class="ico"><use href="#i-sun"/></svg></span><div class="d"><b>甲板看出港</b>7F 悠閒大道（戶外步道）或 13F 船頭瞭望台；日落約 17:30</div></li>
         <li><span class="t" style="font-size:15px">晚上</span><span class="m"><svg class="ico"><use href="#i-star"/></svg></span><div class="d"><b>星座劇院「炫麗啟航」</b>只有第一晚，結尾邀觀眾上台跳舞</div></li>
         <li><span class="t">23:00</span><span class="m"><svg class="ico"><use href="#i-moon"/></svg></span><div class="d"><b>麗都宵夜 23:00–01:00</b>賭場進公海後才開</div></li>
       </ol>
@@ -631,12 +649,13 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
         <li><span class="t" style="font-size:15px">上午</span><span class="m"><svg class="ico"><use href="#i-wave"/></svg></span><div class="d"><b>泳池、滑水梯</b>開放時段看郵報；大廳有賓果、有氧、電影</div></li>
         <li><span class="t">12:00</span><span class="m"><svg class="ico"><use href="#i-food"/></svg></span><div class="d"><b>靠岸，先吃午餐</b>內艙通常較晚輪到入境，可先在麗都吃（以指定入境時段為準）</div></li>
         <li class="end"><span class="t">19:00</span><span class="m"><svg class="ico"><use href="#i-ship"/></svg></span><div class="d"><b>最晚回船</b>晚餐：星夢到 20:30，百味軒、麗都到 21:00（靠港日可能調整）</div></li>
-        <li><span class="t">19:30</span><span class="m"><svg class="ico"><use href="#i-star"/></svg></span><div class="d"><b>劇院表演・7F 最後一晚特賣</b>上甲板碰運氣看奧武山煙火（未確認）</div></li>
+        <li><span class="t">19:30</span><span class="m"><svg class="ico"><use href="#i-star"/></svg></span><div class="d"><b>上甲板看煙火</b>奧武山公園（那霸大綱挽祭），日本時間 20:30；看不看得到視位置而定</div></li>
+        <li><span class="t" style="font-size:15px">晚上</span><span class="m"><svg class="ico"><use href="#i-star"/></svg></span><div class="d"><b>劇院表演・7F 最後一晚特賣</b></div></li>
       </ol>
     </div>
     <div class="panel p3"><span class="ph">10/13 回程日</span>
       <ol class="plan">
-        <li><span class="t" style="font-size:15px">上午</span><span class="m"><svg class="ico"><use href="#i-star"/></svg></span><div class="d"><b>7F 大廳告別慶典</b></div></li>
+        <li><span class="t" style="font-size:15px">上午</span><span class="m"><svg class="ico"><use href="#i-star"/></svg></span><div class="d"><b>歡送節目</b>地點看郵報</div></li>
         <li><span class="t" style="font-size:15px">之後</span><span class="m"><svg class="ico"><use href="#i-gate"/></svg></span><div class="d"><b>準備下船</b><a href="#s8">看第 8 節下船流程</a></div></li>
       </ol>
     </div>
@@ -644,13 +663,13 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
 
   <div class="sub"><svg class="ico"><use href="#i-star"/></svg>技巧</div>
   <div class="tiles">
-    <div class="tile"><span class="ic"><svg class="ico"><use href="#i-star"/></svg></span><h3>劇院</h3><p>每晚 1–2 場、免費、先到先坐（前排保留皇宮房）；提早 15–30 分入場；開演後 7F 入口關閉，改走 8F；禁止錄影</p></div>
-    <div class="tile"><span class="ic"><svg class="ico"><use href="#i-wave"/></svg></span><h3>泳池</h3><p>12F 羅馬泳池 08:00–22:00；凱撒滑水梯只開白天特定時段、身高 115 cm 以上；清晨、用餐時段人少</p></div>
-    <div class="tile"><span class="ic"><svg class="ico"><use href="#i-doc"/></svg></span><h3>郵報 The Daily</h3><p>每天早上到 7F 接待處拿（不送房），隔天的 20:00 後可先領；連船上 Wi-Fi 可看電子版</p></div>
+    <div class="tile"><span class="ic"><svg class="ico"><use href="#i-star"/></svg></span><h3>劇院</h3><p>每晚 1–2 場、免費、先到先坐（前排保留皇宮、露台房）；提早 15–30 分入場；禁止錄影</p></div>
+    <div class="tile"><span class="ic"><svg class="ico"><use href="#i-wave"/></svg></span><h3>泳池</h3><p>12F 羅馬泳池 08:00–22:00；凱撒滑水梯只開特定時段（看郵報）、身高 115 cm 以上；清晨、用餐時段人少</p></div>
+    <div class="tile"><span class="ic"><svg class="ico"><use href="#i-doc"/></svg></span><h3>郵報 The Daily</h3><p>官方已改電子版，連船上 Wi-Fi 免費看；7F 接待處可能還有紙本（不送房）</p></div>
     <div class="tile"><span class="ic"><svg class="ico"><use href="#i-card"/></svg></span><h3>付費</h3><p>藍湖美食（叻沙、牛肉麵，近 24 小時）、Umi Uma 日料、卡拉 OK、賭場（港幣）、免稅店</p></div>
   </div>
 
-  <div class="sub"><svg class="ico"><use href="#i-food"/></svg>免費餐廳時間（2026 年資料，靠港日會調整）</div>
+  <div class="sub"><svg class="ico"><use href="#i-food"/></svg>免費餐廳時間（參考時間，以郵報為準；靠港日會調整）</div>
   <div class="card">
     <div class="gantt">
       <div class="g-row"><div class="n">星夢<small>6F 中式套餐</small></div><div class="g-track" role="img" aria-label="星夢：早餐 07:00–09:30、午餐 11:30–14:00、晚餐 17:30–20:30">
@@ -685,14 +704,14 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
 
   <div class="sub"><svg class="ico"><use href="#i-alert"/></svg>上岸規則</div>
   <div class="tiles">
-    <div class="tile wide alert"><span class="ic"><svg class="ico"><use href="#i-people"/></svg></span><h3>依指定時段本人到場辦入境</h3><p>不下船也要；錯過會被開「不上陸通知書」</p></div>
-    <div class="tile wide alert"><span class="ic"><svg class="ico"><use href="#i-clock"/></svg></span><h3>最晚 20:00 回船</h3><p>＝台灣時間 19:00。郵輪不等人，建議 19:00 回到航廈排隊</p></div>
+    <div class="tile wide alert"><span class="ic"><svg class="ico"><use href="#i-people"/></svg></span><h3>依指定時段本人到場辦入境</h3><p>不下船也要；錯過就不能上岸</p></div>
+    <div class="tile wide alert"><span class="ic"><svg class="ico"><use href="#i-clock"/></svg></span><h3>最晚 20:00 回船</h3><p>＝台灣時間 19:00，以當天船上公告為準。郵輪不等人，建議 19:00 回到航廈排隊</p></div>
     <div class="tile"><span class="ic"><svg class="ico"><use href="#i-doc"/></svg></span><h3>帶這些</h3><p>船卡、護照影本（背面貼上陸許可）、黃色海關申報單（一家一張）；現場按指紋、拍照</p></div>
     <div class="tile"><span class="ic"><svg class="ico"><use href="#i-doc"/></svg></span><h3>影本收好</h3><p>遺失會影響日本出入境；回那霸登船時由日本海關收回。上下船都要刷船卡</p></div>
-    <div class="tile"><span class="ic"><svg class="ico"><use href="#i-gate"/></svg></span><h3>下船順序</h3><p>露台以上、岸上團先下；內艙在星座劇院分批等候，約 14:00–14:30 上岸（估）</p></div>
-    <div class="tile"><span class="ic"><svg class="ico"><use href="#i-alert"/></svg></span><h3>日本國定假日</h3><p>銀行休、人多</p></div>
-    <div class="tile"><span class="ic"><svg class="ico"><use href="#i-yen"/></svg></span><h3>換日圓</h3><p>航廈有外幣兌換機（台幣→日圓）</p></div>
-    <div class="tile"><span class="ic"><svg class="ico"><use href="#i-bag"/></svg></span><h3>免稅</h3><p>上陸許可書可用，同店同日滿 ¥5,000；酒可以買，但上船會被保管到航程結束</p></div>
+    <div class="tile"><span class="ic"><svg class="ico"><use href="#i-gate"/></svg></span><h3>下船順序</h3><p>依船上廣播分批：皇宮、露台、岸上團優先；內艙較晚，約 14:00–14:30 上岸（估）</p></div>
+    <div class="tile"><span class="ic"><svg class="ico"><use href="#i-alert"/></svg></span><h3>日本國定假日</h3><p>銀行休、人多；連假最後一天，也是那霸大綱挽祭最後一天</p></div>
+    <div class="tile"><span class="ic"><svg class="ico"><use href="#i-yen"/></svg></span><h3>換日圓</h3><p>航廈有外幣兌換機（台幣→日圓，6:00–22:00）；國際通 Lawson 牧志店也有（24 小時）</p></div>
+    <div class="tile"><span class="ic"><svg class="ico"><use href="#i-bag"/></svg></span><h3>免稅</h3><p>出示貼上陸許可的護照影本即可辦，同店同日未稅滿 ¥5,000；酒可以買，但上船會被保管到航程結束</p></div>
   </div>
 
   <div class="sub"><svg class="ico"><use href="#i-pin"/></svg>交通</div>
@@ -701,8 +720,8 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
       <div><h3>步行</h3><p>波上宮 12 分・國際通（縣廳前端）15–20 分・單軌縣廳前站 15–19 分</p></div>
       <div class="r"><div class="big">12–20<small>分</small></div></div></div>
     <div class="mode"><span class="ic"><svg class="ico"><use href="#i-taxi"/></svg></span>
-      <div><h3>計程車</h3><p>航廈 1F 排班，排 10–60 分；1F 服務台可寫中文目的地；起跳 ¥650，可用 Uber</p></div>
-      <div class="r"><p class="small muted">國際通</p><div class="big" style="font-size:19px">¥800–1,450</div><p class="small muted">UNIQLO 天久</p><div class="big" style="font-size:19px">¥1,450–1,700</div></div></div>
+      <div><h3>計程車</h3><p>航廈 1F 排班，排 10–60 分（估）；1F 觀光服務台有會說中文的人員；上車給司機看日文店名或 Google 地圖畫面；起跳 ¥650（1.65 km 內），可用 Uber</p></div>
+      <div class="r"><p class="small muted">國際通</p><div class="big" style="font-size:19px">¥750–1,300</div><p class="small muted">UNIQLO 天久</p><div class="big" style="font-size:19px">¥1,450–1,700</div></div></div>
     <div class="mode"><span class="ic"><svg class="ico"><use href="#i-rail"/></svg></span>
       <div><h3>單軌電車</h3><p>ゆいレール Yui Rail，那霸市區的高架電車；可刷信用卡感應或 Suica</p></div>
       <div class="r"><div class="big" style="font-size:19px">¥250–390</div><p class="small muted">單程</p></div></div>
@@ -732,8 +751,8 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
     </div>
     <div class="panel p2"><span class="ph">方案 B 購物</span>
       <ol class="plan" data-from="terminal">
-        <li data-go="taxi uniqlo"><span class="t">14:00</span><span class="m"><svg class="ico"><use href="#i-taxi"/></svg></span><div class="d"><b>計程車到<a href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%A6%E3%83%8B%E3%82%AF%E3%83%AD%20%E5%A4%A9%E4%B9%85%E3%82%8A%E3%81%86%E3%81%BC%E3%81%86%E6%A5%BD%E5%B8%82%E5%BA%97" target="_blank" rel="noopener">UNIQLO 天久りうぼう楽市店</a></b>約 10 分；營業 10:00–21:00</div></li>
-        <li data-go="walk muji"><span class="t">15:00</span><span class="m"><svg class="ico"><use href="#i-walk"/></svg></span><div class="d"><b>走到<a href="https://www.google.com/maps/search/?api=1&amp;query=%E7%84%A1%E5%8D%B0%E8%89%AF%E5%93%81%20%E9%82%A3%E8%A6%87%E3%83%A1%E3%82%A4%E3%83%B3%E3%83%97%E3%83%AC%E3%82%A4%E3%82%B9" target="_blank" rel="noopener">無印良品 那覇メインプレイス</a></b>11 分（上坡），在 2F；營業 9:00–22:00</div></li>
+        <li data-go="taxi uniqlo"><span class="t">14:00</span><span class="m"><svg class="ico"><use href="#i-taxi"/></svg></span><div class="d"><b>計程車到<a href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%A6%E3%83%8B%E3%82%AF%E3%83%AD%20%E5%A4%A9%E4%B9%85%E3%82%8A%E3%81%86%E3%81%BC%E3%81%86%E6%A5%BD%E5%B8%82%E5%BA%97" target="_blank" rel="noopener">UNIQLO 天久りうぼう楽市店</a></b>約 10 分；營業 10:00–21:00；只賣男女裝</div></li>
+        <li data-go="walk muji"><span class="t">15:00</span><span class="m"><svg class="ico"><use href="#i-walk"/></svg></span><div class="d"><b>走到<a href="https://www.google.com/maps/search/?api=1&amp;query=%E7%84%A1%E5%8D%B0%E8%89%AF%E5%93%81%20%E9%82%A3%E8%A6%87%E3%83%A1%E3%82%A4%E3%83%B3%E3%83%97%E3%83%AC%E3%82%A4%E3%82%B9" target="_blank" rel="noopener">無印良品 那覇メインプレイス</a></b>11 分，在 2F；營業 9:00–22:00</div></li>
         <li data-go="walk omoromachi, rail makishi"><span class="t">16:15</span><span class="m"><svg class="ico"><use href="#i-rail"/></svg></span><div class="d"><b><a href="https://www.google.com/maps/search/?api=1&amp;query=%E3%81%8A%E3%82%82%E3%82%8D%E3%81%BE%E3%81%A1%E9%A7%85" target="_blank" rel="noopener">おもろまち站</a>搭單軌到<a href="https://www.google.com/maps/search/?api=1&amp;query=%E7%89%A7%E5%BF%97%E9%A7%85" target="_blank" rel="noopener">牧志站</a></b>走到車站 5 分，搭 2 站</div></li>
         <li data-go="walk lawson, walk market, walk donki, at kokusai"><span class="t">16:30</span><span class="m"><svg class="ico"><use href="#i-bag"/></svg></span><div class="d"><b><a href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%AD%E3%83%BC%E3%82%BD%E3%83%B3%20%E5%9B%BD%E9%9A%9B%E9%80%9A%E7%89%A7%E5%BF%97%E5%BA%97%20%E3%81%A6%E3%82%93%E3%81%B6%E3%81%99%E9%82%A3%E8%A6%87" target="_blank" rel="noopener">Lawson 國際通牧志店</a>、<a href="https://www.google.com/maps/search/?api=1&amp;query=%E9%82%A3%E8%A6%87%20%E5%9B%BD%E9%9A%9B%E9%80%9A%E3%82%8A" target="_blank" rel="noopener">國際通</a>、<a href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%89%E3%83%B3%E3%83%BB%E3%82%AD%E3%83%9B%E3%83%BC%E3%83%86%20%E5%9B%BD%E9%9A%9B%E9%80%9A%E3%82%8A%E5%BA%97" target="_blank" rel="noopener">唐吉訶德</a>、<a href="https://www.google.com/maps/search/?api=1&amp;query=%E7%AC%AC%E4%B8%80%E7%89%A7%E5%BF%97%E5%85%AC%E8%A8%AD%E5%B8%82%E5%A0%B4" target="_blank" rel="noopener">牧志市場</a></b>Lawson 在てんぶす那覇 1F，24 小時</div></li>
         <li data-go="taxi terminal"><span class="t">18:35</span><span class="m"><svg class="ico"><use href="#i-taxi"/></svg></span><div class="d"><b>計程車回<a href="https://www.google.com/maps/search/?api=1&amp;query=%E9%82%A3%E8%A6%87%E3%82%AF%E3%83%AB%E3%83%BC%E3%82%BA%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%8A%E3%83%AB" target="_blank" rel="noopener">航廈</a></b>約 10–15 分</div></li>
@@ -758,13 +777,13 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
     <li><div class="s"><h3>分批下船</h3><p>皇宮、露台房優先，內艙排在後段；船卡隨身，下船前再刷一次</p></div></li>
     <li><div class="s"><h3>出船後</h3><p>領回代保管物品（酒等）→ 入境查驗（可走自動通關）→ 依樓層領托運行李 → 海關</p></div></li>
     <li><div class="s"><h3>台灣海關</h3>
-      <ul><li>酒 1.5 公升內免稅（滿 18 歲）、菸 200 支（或雪茄 25 支、菸絲 1 磅）；超過要走紅線申報</li><li>現金等值 1 萬美元以上要申報</li><li>禁帶肉類、種子、蔬果等生鮮動植物；不合規電子菸、加熱菸不要帶</li></ul></div></li>
+      <ul><li>免稅額：酒 1.5 公升（滿 18 歲）；菸限滿 20 歲，捲菸 200 支或雪茄 25 支或菸絲 1 磅（擇一）；超過要走紅線申報</li><li>現金要申報：新臺幣超過 10 萬元（超過部分不能帶入）、外幣超過等值 1 萬美元、人民幣超過 2 萬元</li><li>禁帶肉類（含肉乾、真空包）、新鮮蔬果、種子</li><li>電子菸一律禁止（最低罰 5 萬元）；在日本或船上買的加熱菸、加熱器也不能帶回</li></ul></div></li>
     <li><div class="s"><h3><span class="time">16:15–17:15</span>出關</h3><p>時間為估計</p></div></li>
   </ol>
 </section>
 </main>
 
-<footer>v2.2・2026/10/05 更新・實際以船上日報 The Daily 與現場公告為準</footer>
+<footer>v2.3・2026/10/05 更新・實際以船上日報 The Daily 與現場公告為準</footer>
 </div>
 
 <script>
@@ -834,7 +853,8 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
     var URLS = [
       'https://marine-api.open-meteo.com/v1/marine?hourly=wave_height' + AT,
       'https://api.open-meteo.com/v1/forecast?hourly=wind_speed_10m,wind_direction_10m&wind_speed_unit=ms' + AT,
-      'https://api.open-meteo.com/v1/forecast?latitude=26.2125&longitude=127.6792&hourly=weather_code,temperature_2m,precipitation_probability&timezone=Asia%2FTokyo&start_date=2026-10-12&end_date=2026-10-12'
+      'https://api.open-meteo.com/v1/forecast?latitude=26.2125&longitude=127.6792&hourly=weather_code,temperature_2m,precipitation_probability&timezone=Asia%2FTokyo&start_date=2026-10-12&end_date=2026-10-12',
+      'https://www.jma.go.jp/bosai/forecast/data/forecast/471000.json' // 沖縄気象台 forecast (short-term + weekly)
     ];
     var BFT = [0.2, 1.5, 3.3, 5.4, 7.9, 10.7, 13.8, 17.1, 20.7, 24.4, 28.4, 32.6]; // Beaufort upper bounds, m/s
     var DIRS = ['北', '東北', '東', '東南', '南', '西南', '西', '西北'];
@@ -872,7 +892,9 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
         if (h.temperature_2m[i] != null) { t0 = Math.min(t0, h.temperature_2m[i]); t1 = Math.max(t1, h.temperature_2m[i]); }
         if (h.precipitation_probability[i] != null) p = Math.max(p, h.precipitation_probability[i]);
       });
-      return t1 < t0 ? null : { c: c, t0: t0, t1: t1, p: p };
+      if (t1 < t0) return null;
+      var k = sky(c);
+      return { label: k[0], icon: k[1], t0: t0, t1: t1, p: p, src: 'om' };
     }
     function sky(c){
       if (c >= 95) return ['雷雨', 'i-storm'];
@@ -883,6 +905,41 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
       if (c === 3) return ['陰天', 'i-cloud'];
       if (c >= 1) return [c === 1 ? '晴時多雲' : '多雲', 'i-partly'];
       return c === 0 ? ['晴', 'i-sun'] : ['–', 'i-cloud'];
+    }
+    function jmaSky(code){ // JMA weather code (1xx 晴, 2xx 曇, 3xx 雨, 4xx 雪) → label, icon
+      var c = +code, g = Math.floor(c / 100);
+      var dry = [100, 101, 110, 111, 130, 131, 132, 200, 201, 209, 210, 211, 231], storm = [108, 123, 125, 140, 240, 250, 350];
+      if (storm.indexOf(c) >= 0) return [g === 1 ? '晴偶雷雨' : g === 2 ? '多雲有雷雨' : '雷雨', 'i-storm'];
+      if (g === 1) return c === 100 || c === 130 || c === 131 ? ['晴', 'i-sun'] : dry.indexOf(c) >= 0 ? ['晴時多雲', 'i-partly'] : ['晴偶陣雨', 'i-rain'];
+      if (g === 2) return c === 209 ? ['霧', 'i-fog'] : c === 201 || c === 210 || c === 211 ? ['多雲時晴', 'i-partly'] : dry.indexOf(c) >= 0 ? ['多雲', 'i-cloud'] : ['多雲短暫雨', 'i-rain'];
+      if (g === 3) return [c === 306 ? '大雨' : c === 308 ? '暴風雨' : c === 301 ? '雨時晴' : '雨', 'i-rain'];
+      return g === 4 ? ['雪', 'i-cloud'] : null;
+    }
+    function jma(d){ // 10/12 from the short-term forecast once it covers that day, the weekly one before that
+      var day = '2026-10-12', code = null, p = null, t = [];
+      function on(ts){ var r = []; ts.timeDefines.forEach(function(s, i){ if (s.slice(0, 10) === day) r.push(i); }); return r; }
+      function area(ts, c){ for (var i = 0; i < ts.areas.length; i++) if (ts.areas[i].area.code === c) return ts.areas[i]; return null; }
+      function num(v){ return v === '' || v == null ? null : +v; }
+      var s = d[0] && d[0].timeSeries, w = d[1] && d[1].timeSeries, a;
+      if (s) {
+        if ((a = area(s[0], '471010')) && on(s[0]).length) code = a.weatherCodes[on(s[0])[0]];           // 本島中南部
+        if ((a = area(s[1], '471010'))) on(s[1]).forEach(function(j){                                    // 6-hourly, port hours
+          var v = num(a.pops[j]); if (v != null && +s[1].timeDefines[j].slice(11, 13) >= 12) p = Math.max(p || 0, v);
+        });
+        if ((a = area(s[2], '91197'))) on(s[2]).forEach(function(j){ var v = num(a.temps[j]); if (v != null) t.push(v); }); // 那覇
+      }
+      if (w) {
+        var k = on(w[0]);
+        if ((a = area(w[0], '471000')) && k.length) {                                                       // 沖縄本島地方
+          if (code == null) code = a.weatherCodes[k[0]];
+          if (p == null) p = num(a.pops[k[0]]);
+        }
+        k = on(w[1]);
+        if ((a = area(w[1], '91197')) && k.length && !t.length) [num(a.tempsMin[k[0]]), num(a.tempsMax[k[0]])].forEach(function(v){ if (v != null) t.push(v); });
+      }
+      var sk = code == null ? null : jmaSky(code);
+      if (!sk || !t.length) return null;
+      return { label: sk[0], icon: sk[1], t0: Math.min.apply(null, t), t1: Math.max.apply(null, t), p: p == null ? -1 : p, src: 'jma' };
     }
     function fill(id, icon, value, lv, cls, line){
       var el = document.getElementById(id), chip = el.querySelector('.wx-lv');
@@ -906,15 +963,20 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
         : '：船會晃，容易暈船的人開船前先吃暈船藥（7F 接待處有免費的）')]);
       var n = s.nah;
       if (n) {
-        var k = sky(n.c);
-        fill('wx-nah', k[1], span(n.t0, n.t1, Math.round) + '<small>°C</small>', k[0], n.c >= 51 ? 'rain' : '',
+        if (!n.label) { var k = sky(n.c); n = { label: k[0], icon: k[1], t0: n.t0, t1: n.t1, p: n.p, src: 'om' }; } // cache from v2.0
+        fill('wx-nah', n.icon, span(n.t0, n.t1, Math.round) + '<small>°C</small>', n.label, /雨/.test(n.label) ? 'rain' : '',
              n.p < 0 ? '' : '降雨機率 ' + n.p + '%');
-        if (n.p >= 30) tips.push(['i-drop', '那霸降雨機率 ' + n.p + '%：帶傘或輕便雨衣']);
+        document.querySelector('#wx-nah .wx-d small').textContent = n.src === 'jma' ? '日本氣象廳' : '靠港時段';
+        if (n.p >= 30) tips.push(['i-drop', '那霸降雨機率 ' + n.p + '%：' + (n.p >= 50 ? '帶傘或輕便雨衣' : '帶把折傘備用')]);
         if (Math.round(n.t1) >= 30) tips.push(['i-sun', '那霸最高 ' + Math.round(n.t1) + '°C：防曬、多補水']);
       }
       document.getElementById('wx-tips').innerHTML = tips.map(function(t){
         return '<li><svg class="ico"><use href="#' + t[0] + '"/></svg><span>' + t[1] + '</span></li>';
       }).join('');
+    }
+    function nahaOf(d){ // official JMA forecast first, Open-Meteo if it is missing or unreadable
+      try { var j = d[3] && jma(d[3]); if (j) return j; } catch (e) {}
+      return d[2] ? naha(d[2]) : null;
     }
     function load(){
       last = Date.now();
@@ -923,7 +985,7 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
       })).then(function(d){
         var s = null;
         try {
-          s = { out: d[0] ? leg(d[0], d[1], LEGS.out) : null, back: d[0] ? leg(d[0], d[1], LEGS.back) : null, nah: d[2] ? naha(d[2]) : null };
+          s = { out: d[0] ? leg(d[0], d[1], LEGS.out) : null, back: d[0] ? leg(d[0], d[1], LEGS.back) : null, nah: nahaOf(d) };
           if (!s.out && !s.back && !s.nah) s = null;
         } catch (e) { s = null; }
         if (!s) { stamp.textContent = saved ? '離線，顯示台灣時間 ' + tw(saved.t) + ' 的預報' : '暫時抓不到預報，稍後再開'; return; }
