@@ -8,7 +8,8 @@
 <style>
 /* Layout: one-column "voyage log" for iPhone. Boarding-pass header, a sticky row of stations
    in trip order, then each station as a stop. Works offline and without JavaScript:
-   toggles are radio buttons + :has(); JS only adds countdown, memory and copy. */
+   toggles are radio buttons + :has(); JS adds countdown, memory, copy, live weather
+   and the Naha route maps (drawn from the plan lists). */
 :root{
   --bg:#EEF3F6; --surface:#FFFFFF; --surface-2:#E2EBF0; --ink:#10263A; --muted:#5A6D7C; --line:#D2DDE5;
   --accent:#0B7A83; --accent-soft:#D5EBED; --signal:#C8461F; --signal-soft:#F8E1D8; --sun:#B97C0C; --sun-soft:#F6EBD3;
@@ -208,6 +209,18 @@ a{color:var(--accent)}
 .plan .d b{display:block;font-size:15px}
 .plan .d a{text-underline-offset:3px}
 .plan li.end .t,.plan li.end .d b{color:var(--signal)}
+/* plan step <-> map marks (JS adds .focus on the map and .on on the matching step and marks) */
+.plan li{margin:0 -8px;padding:0 8px;border-radius:12px;transition:background-color .15s;-webkit-tap-highlight-color:transparent}
+.plan li.on{background:var(--accent-soft)}
+.maphint{margin:6px 0 0;font-size:12px;color:var(--muted)}
+.map [data-s]{transition:opacity .15s,transform .15s}
+.map .pt{transform-box:fill-box;transform-origin:center}
+.map.focus [data-s]{opacity:.18}
+.map.focus [data-s].on{opacity:1}
+.map .pt.on{transform:scale(1.5)}
+.map .lbl.on,.map .street-t.on{fill:var(--accent);font-weight:700}
+.map .r-walk.on,.map .r-taxi.on,.map .r-street.on{stroke-width:3.6}
+.map .r-rail.on{stroke-width:5}
 </style>
 <style>
 /* transport + parking */
@@ -344,7 +357,7 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
 <div class="wrap">
 
 <header class="pass" aria-label="航程">
-  <div class="top"><span>STARCRUISES · 探索星號</span><span><span class="num" style="font-size:15px">2 晚</span> · <span class="num" style="font-size:15px">v2.0</span></span></div>
+  <div class="top"><span>STARCRUISES · 探索星號</span><span><span class="num" style="font-size:15px">2 晚</span> · <span class="num" style="font-size:15px">v2.1</span></span></div>
   <div class="route">
     <div><div class="small" style="color:var(--pass-muted)">TWKEL</div><div class="code">KEL</div><div class="city">基隆 西岸旅客中心</div></div>
     <div class="mid"><svg class="ico lg"><use href="#i-ship"/></svg><span class="num" style="font-size:15px">⇄</span></div>
@@ -708,25 +721,23 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
       <input type="radio" name="plan" id="pb" class="r2"><label for="pb">B 購物</label>
     </div>
     <div class="panel p1"><span class="ph">方案 A 散步</span>
-<figure class="map"><svg viewBox="0 0 360 274" role="img" aria-label="方案 A 路線地圖：航廈、波上宮、壺屋陶器街、牧志市場、國際通、縣廳前"><rect class="land" x="0" y="0" width="360" height="274"/><polygon class="sea" points="0.0,273.6 10.9,194.6 19.6,164.2 25.1,142.3 37.1,119.2 57.8,94.9 73.1,66.9 96.0,48.6 117.8,24.3 130.9,0.0 0.0,0.0"/><text class="sea-t" x="10" y="40">海</text><polyline class="street" points="133.1,222.5 161.5,229.8 174.5,217.7 195.3,209.2 231.3,204.3 268.4,192.1 280.4,176.3"/><polyline class="rail" points="126.7,225.2 178.8,167.6 268.3,192.3 302.8,197.0 331.7,124.4"/><circle class="stn" cx="126.7" cy="225.2" r="2.6"/><circle class="stn" cx="178.8" cy="167.6" r="2.6"/><circle class="stn" cx="268.3" cy="192.3" r="2.6"/><circle class="stn" cx="302.8" cy="197.0" r="2.6"/><circle class="stn" cx="331.7" cy="124.4" r="2.6"/><g class="north"><path d="M342,26 l6,-16 l6,16 l-6,-5z"/><text x="348" y="38">N</text></g><g class="scale"><path d="M12,260 v4 h54.8 v-4"/><text x="39.4" y="256">500 m</text></g><line class="r-walk" x1="74.5" y1="89.3" x2="34.3" y2="151.3"/><line class="r-taxi" x1="34.3" y1="151.3" x2="259.7" y2="244.3"/><line class="r-walk" x1="259.7" y1="244.3" x2="221.3" y2="224.4"/><line class="r-walk" x1="221.3" y1="224.4" x2="268.4" y2="192.1"/><polyline class="r-street" points="133.1,222.5 161.5,229.8 174.5,217.7 195.3,209.2 231.3,204.3 268.4,192.1"/><line class="r-walk" x1="133.1" y1="222.5" x2="126.7" y2="225.2"/><line class="r-walk" x1="126.7" y1="225.2" x2="74.5" y2="89.3"/><text class="street-t" x="196" y="200" text-anchor="middle">國際通</text><circle class="pt" cx="34.3" cy="151.3" r="4.6"/><text class="lbl" x="42.3" y="155.3" text-anchor="start">波上宮</text><circle class="pt" cx="259.7" cy="244.3" r="4.6"/><text class="lbl" x="267.7" y="248.3" text-anchor="start">壺屋陶器街</text><circle class="pt" cx="221.3" cy="224.4" r="4.6"/><text class="lbl" x="221.3" y="240.4" text-anchor="middle">牧志市場</text><circle class="pt" cx="126.7" cy="225.2" r="4.6"/><text class="lbl" x="126.7" y="242.2" text-anchor="middle">縣廳前</text><circle class="pt end" cx="74.5" cy="89.3" r="6"/><text class="lbl" x="83.5" y="93.3" text-anchor="start">航廈</text></svg><figcaption><span><i class="k-walk"></i>步行</span><span><i class="k-taxi"></i>計程車</span><span class="muted">那霸市區・沖繩本島南部西岸，依實際位置等比例；灰線為單軌電車</span></figcaption></figure>
-      <ol class="plan">
-        <li><span class="t">14:00</span><span class="m"><svg class="ico"><use href="#i-walk"/></svg></span><div class="d"><b>步行到<a href="https://www.google.com/maps/search/?api=1&amp;query=%E6%B3%A2%E4%B8%8A%E5%AE%AE" target="_blank" rel="noopener">波上宮</a></b></div></li>
-        <li><span class="t">14:45</span><span class="m"><svg class="ico"><use href="#i-taxi"/></svg></span><div class="d"><b>計程車到<a href="https://www.google.com/maps/search/?api=1&amp;query=%E5%A3%BA%E5%B1%8B%E3%82%84%E3%81%A1%E3%82%80%E3%82%93%E9%80%9A%E3%82%8A" target="_blank" rel="noopener">壺屋陶器街</a></b></div></li>
-        <li><span class="t">16:15</span><span class="m"><svg class="ico"><use href="#i-food"/></svg></span><div class="d"><b><a href="https://www.google.com/maps/search/?api=1&amp;query=%E7%AC%AC%E4%B8%80%E7%89%A7%E5%BF%97%E5%85%AC%E8%A8%AD%E5%B8%82%E5%A0%B4" target="_blank" rel="noopener">牧志市場</a>吃晚餐</b></div></li>
-        <li><span class="t">17:15</span><span class="m"><svg class="ico"><use href="#i-walk"/></svg></span><div class="d"><b>由東往西逛<a href="https://www.google.com/maps/search/?api=1&amp;query=%E9%82%A3%E8%A6%87%20%E5%9B%BD%E9%9A%9B%E9%80%9A%E3%82%8A" target="_blank" rel="noopener">國際通</a></b></div></li>
-        <li><span class="t">18:30</span><span class="m"><svg class="ico"><use href="#i-walk"/></svg></span><div class="d"><b>從<a href="https://www.google.com/maps/search/?api=1&amp;query=%E7%9C%8C%E5%BA%81%E5%89%8D%E9%A7%85%20%E9%82%A3%E8%A6%87" target="_blank" rel="noopener">縣廳前</a>端走回</b>15–20 分，或搭計程車</div></li>
-        <li class="end"><span class="t">19:00</span><span class="m"><svg class="ico"><use href="#i-ship"/></svg></span><div class="d"><b>回到<a href="https://www.google.com/maps/search/?api=1&amp;query=%E9%82%A3%E8%A6%87%E3%82%AF%E3%83%AB%E3%83%BC%E3%82%BA%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%8A%E3%83%AB" target="_blank" rel="noopener">航廈</a></b></div></li>
+      <ol class="plan" data-from="terminal">
+        <li data-go="walk naminoue"><span class="t">14:00</span><span class="m"><svg class="ico"><use href="#i-walk"/></svg></span><div class="d"><b>步行到<a href="https://www.google.com/maps/search/?api=1&amp;query=%E6%B3%A2%E4%B8%8A%E5%AE%AE" target="_blank" rel="noopener">波上宮</a></b></div></li>
+        <li data-go="taxi tsuboya"><span class="t">14:45</span><span class="m"><svg class="ico"><use href="#i-taxi"/></svg></span><div class="d"><b>計程車到<a href="https://www.google.com/maps/search/?api=1&amp;query=%E5%A3%BA%E5%B1%8B%E3%82%84%E3%81%A1%E3%82%80%E3%82%93%E9%80%9A%E3%82%8A" target="_blank" rel="noopener">壺屋陶器街</a></b></div></li>
+        <li data-go="walk market"><span class="t">16:15</span><span class="m"><svg class="ico"><use href="#i-food"/></svg></span><div class="d"><b><a href="https://www.google.com/maps/search/?api=1&amp;query=%E7%AC%AC%E4%B8%80%E7%89%A7%E5%BF%97%E5%85%AC%E8%A8%AD%E5%B8%82%E5%A0%B4" target="_blank" rel="noopener">牧志市場</a>吃晚餐</b></div></li>
+        <li data-go="walk kokusai"><span class="t">17:15</span><span class="m"><svg class="ico"><use href="#i-walk"/></svg></span><div class="d"><b>由東往西逛<a href="https://www.google.com/maps/search/?api=1&amp;query=%E9%82%A3%E8%A6%87%20%E5%9B%BD%E9%9A%9B%E9%80%9A%E3%82%8A" target="_blank" rel="noopener">國際通</a></b></div></li>
+        <li data-go="walk kenchomae, walk terminal"><span class="t">18:30</span><span class="m"><svg class="ico"><use href="#i-walk"/></svg></span><div class="d"><b>從<a href="https://www.google.com/maps/search/?api=1&amp;query=%E7%9C%8C%E5%BA%81%E5%89%8D%E9%A7%85%20%E9%82%A3%E8%A6%87" target="_blank" rel="noopener">縣廳前</a>端走回</b>15–20 分，或搭計程車</div></li>
+        <li class="end" data-go="at terminal"><span class="t">19:00</span><span class="m"><svg class="ico"><use href="#i-ship"/></svg></span><div class="d"><b>回到<a href="https://www.google.com/maps/search/?api=1&amp;query=%E9%82%A3%E8%A6%87%E3%82%AF%E3%83%AB%E3%83%BC%E3%82%BA%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%8A%E3%83%AB" target="_blank" rel="noopener">航廈</a></b></div></li>
       </ol>
     </div>
     <div class="panel p2"><span class="ph">方案 B 購物</span>
-<figure class="map"><svg viewBox="0 0 360 274" role="img" aria-label="方案 B 路線地圖：航廈、UNIQLO、無印良品、おもろまち站、牧志站、Lawson、牧志市場、唐吉訶德"><rect class="land" x="0" y="0" width="360" height="274"/><polygon class="sea" points="0.0,273.6 10.9,194.6 19.6,164.2 25.1,142.3 37.1,119.2 57.8,94.9 73.1,66.9 96.0,48.6 117.8,24.3 130.9,0.0 0.0,0.0"/><text class="sea-t" x="10" y="40">海</text><polyline class="street" points="133.1,222.5 161.5,229.8 174.5,217.7 195.3,209.2 231.3,204.3 268.4,192.1 280.4,176.3"/><polyline class="rail" points="126.7,225.2 178.8,167.6 268.3,192.3 302.8,197.0 331.7,124.4"/><circle class="stn" cx="126.7" cy="225.2" r="2.6"/><circle class="stn" cx="178.8" cy="167.6" r="2.6"/><circle class="stn" cx="268.3" cy="192.3" r="2.6"/><circle class="stn" cx="302.8" cy="197.0" r="2.6"/><circle class="stn" cx="331.7" cy="124.4" r="2.6"/><g class="north"><path d="M342,26 l6,-16 l6,16 l-6,-5z"/><text x="348" y="38">N</text></g><g class="scale"><path d="M12,260 v4 h54.8 v-4"/><text x="39.4" y="256">500 m</text></g><line class="r-taxi" x1="74.5" y1="89.3" x2="235.9" y2="28.5"/><line class="r-walk" x1="235.9" y1="28.5" x2="282.7" y2="87.8"/><line class="r-walk" x1="282.7" y1="87.8" x2="331.7" y2="124.4"/><polyline class="r-rail" points="331.7,124.4 302.8,197.0 268.3,192.3"/><line class="r-walk" x1="268.3" y1="192.3" x2="231.1" y2="204.9"/><line class="r-walk" x1="231.1" y1="204.9" x2="221.3" y2="224.4"/><line class="r-walk" x1="221.3" y1="224.4" x2="174.9" y2="218.0"/><line class="r-taxi" x1="174.9" y1="218.0" x2="74.5" y2="89.3"/><text class="street-t" x="140" y="214" text-anchor="middle">國際通</text><circle class="pt" cx="235.9" cy="28.5" r="4.6"/><text class="lbl" x="243.9" y="32.5" text-anchor="start">UNIQLO</text><circle class="pt" cx="282.7" cy="87.8" r="4.6"/><text class="lbl" x="290.7" y="91.8" text-anchor="start">無印良品</text><circle class="pt" cx="331.7" cy="124.4" r="4.6"/><text class="lbl" x="323.7" y="140.4" text-anchor="end">おもろまち站</text><circle class="pt" cx="268.3" cy="192.3" r="4.6"/><text class="lbl" x="276.3" y="196.3" text-anchor="start">牧志站</text><circle class="pt" cx="231.1" cy="204.9" r="4.6"/><text class="lbl" x="231.1" y="195.9" text-anchor="middle">Lawson</text><circle class="pt" cx="221.3" cy="224.4" r="4.6"/><text class="lbl" x="227.3" y="240.4" text-anchor="middle">牧志市場</text><circle class="pt" cx="174.9" cy="218.0" r="4.6"/><text class="lbl" x="174.9" y="234.0" text-anchor="middle">唐吉訶德</text><circle class="pt end" cx="74.5" cy="89.3" r="6"/><text class="lbl" x="83.5" y="93.3" text-anchor="start">航廈</text></svg><figcaption><span><i class="k-walk"></i>步行</span><span><i class="k-taxi"></i>計程車</span><span><i class="k-rail"></i>單軌</span><span class="muted">那霸市區・沖繩本島南部西岸，依實際位置等比例；灰線為單軌電車</span></figcaption></figure>
-      <ol class="plan">
-        <li><span class="t">14:00</span><span class="m"><svg class="ico"><use href="#i-taxi"/></svg></span><div class="d"><b>計程車到<a href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%A6%E3%83%8B%E3%82%AF%E3%83%AD%20%E5%A4%A9%E4%B9%85%E3%82%8A%E3%81%86%E3%81%BC%E3%81%86%E6%A5%BD%E5%B8%82%E5%BA%97" target="_blank" rel="noopener">UNIQLO 天久りうぼう楽市店</a></b>約 10 分；營業 10:00–21:00</div></li>
-        <li><span class="t">15:00</span><span class="m"><svg class="ico"><use href="#i-walk"/></svg></span><div class="d"><b>走到<a href="https://www.google.com/maps/search/?api=1&amp;query=%E7%84%A1%E5%8D%B0%E8%89%AF%E5%93%81%20%E9%82%A3%E8%A6%87%E3%83%A1%E3%82%A4%E3%83%B3%E3%83%97%E3%83%AC%E3%82%A4%E3%82%B9" target="_blank" rel="noopener">無印良品 那覇メインプレイス</a></b>11 分（上坡），在 2F；營業 9:00–22:00</div></li>
-        <li><span class="t">16:15</span><span class="m"><svg class="ico"><use href="#i-rail"/></svg></span><div class="d"><b><a href="https://www.google.com/maps/search/?api=1&amp;query=%E3%81%8A%E3%82%82%E3%82%8D%E3%81%BE%E3%81%A1%E9%A7%85" target="_blank" rel="noopener">おもろまち站</a>搭單軌到<a href="https://www.google.com/maps/search/?api=1&amp;query=%E7%89%A7%E5%BF%97%E9%A7%85" target="_blank" rel="noopener">牧志站</a></b>走到車站 5 分，搭 2 站</div></li>
-        <li><span class="t">16:30</span><span class="m"><svg class="ico"><use href="#i-bag"/></svg></span><div class="d"><b><a href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%AD%E3%83%BC%E3%82%BD%E3%83%B3%20%E5%9B%BD%E9%9A%9B%E9%80%9A%E7%89%A7%E5%BF%97%E5%BA%97%20%E3%81%A6%E3%82%93%E3%81%B6%E3%81%99%E9%82%A3%E8%A6%87" target="_blank" rel="noopener">Lawson 國際通牧志店</a>、<a href="https://www.google.com/maps/search/?api=1&amp;query=%E9%82%A3%E8%A6%87%20%E5%9B%BD%E9%9A%9B%E9%80%9A%E3%82%8A" target="_blank" rel="noopener">國際通</a>、<a href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%89%E3%83%B3%E3%83%BB%E3%82%AD%E3%83%9B%E3%83%BC%E3%83%86%20%E5%9B%BD%E9%9A%9B%E9%80%9A%E3%82%8A%E5%BA%97" target="_blank" rel="noopener">唐吉訶德</a>、<a href="https://www.google.com/maps/search/?api=1&amp;query=%E7%AC%AC%E4%B8%80%E7%89%A7%E5%BF%97%E5%85%AC%E8%A8%AD%E5%B8%82%E5%A0%B4" target="_blank" rel="noopener">牧志市場</a></b>Lawson 在てんぶす那覇 1F，24 小時</div></li>
-        <li><span class="t">18:35</span><span class="m"><svg class="ico"><use href="#i-taxi"/></svg></span><div class="d"><b>計程車回<a href="https://www.google.com/maps/search/?api=1&amp;query=%E9%82%A3%E8%A6%87%E3%82%AF%E3%83%AB%E3%83%BC%E3%82%BA%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%8A%E3%83%AB" target="_blank" rel="noopener">航廈</a></b>約 10–15 分</div></li>
-        <li class="end"><span class="t">19:00</span><span class="m"><svg class="ico"><use href="#i-ship"/></svg></span><div class="d"><b>回到航廈</b></div></li>
+      <ol class="plan" data-from="terminal">
+        <li data-go="taxi uniqlo"><span class="t">14:00</span><span class="m"><svg class="ico"><use href="#i-taxi"/></svg></span><div class="d"><b>計程車到<a href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%A6%E3%83%8B%E3%82%AF%E3%83%AD%20%E5%A4%A9%E4%B9%85%E3%82%8A%E3%81%86%E3%81%BC%E3%81%86%E6%A5%BD%E5%B8%82%E5%BA%97" target="_blank" rel="noopener">UNIQLO 天久りうぼう楽市店</a></b>約 10 分；營業 10:00–21:00</div></li>
+        <li data-go="walk muji"><span class="t">15:00</span><span class="m"><svg class="ico"><use href="#i-walk"/></svg></span><div class="d"><b>走到<a href="https://www.google.com/maps/search/?api=1&amp;query=%E7%84%A1%E5%8D%B0%E8%89%AF%E5%93%81%20%E9%82%A3%E8%A6%87%E3%83%A1%E3%82%A4%E3%83%B3%E3%83%97%E3%83%AC%E3%82%A4%E3%82%B9" target="_blank" rel="noopener">無印良品 那覇メインプレイス</a></b>11 分（上坡），在 2F；營業 9:00–22:00</div></li>
+        <li data-go="walk omoromachi, rail makishi"><span class="t">16:15</span><span class="m"><svg class="ico"><use href="#i-rail"/></svg></span><div class="d"><b><a href="https://www.google.com/maps/search/?api=1&amp;query=%E3%81%8A%E3%82%82%E3%82%8D%E3%81%BE%E3%81%A1%E9%A7%85" target="_blank" rel="noopener">おもろまち站</a>搭單軌到<a href="https://www.google.com/maps/search/?api=1&amp;query=%E7%89%A7%E5%BF%97%E9%A7%85" target="_blank" rel="noopener">牧志站</a></b>走到車站 5 分，搭 2 站</div></li>
+        <li data-go="walk lawson, walk market, walk donki, at kokusai"><span class="t">16:30</span><span class="m"><svg class="ico"><use href="#i-bag"/></svg></span><div class="d"><b><a href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%AD%E3%83%BC%E3%82%BD%E3%83%B3%20%E5%9B%BD%E9%9A%9B%E9%80%9A%E7%89%A7%E5%BF%97%E5%BA%97%20%E3%81%A6%E3%82%93%E3%81%B6%E3%81%99%E9%82%A3%E8%A6%87" target="_blank" rel="noopener">Lawson 國際通牧志店</a>、<a href="https://www.google.com/maps/search/?api=1&amp;query=%E9%82%A3%E8%A6%87%20%E5%9B%BD%E9%9A%9B%E9%80%9A%E3%82%8A" target="_blank" rel="noopener">國際通</a>、<a href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%89%E3%83%B3%E3%83%BB%E3%82%AD%E3%83%9B%E3%83%BC%E3%83%86%20%E5%9B%BD%E9%9A%9B%E9%80%9A%E3%82%8A%E5%BA%97" target="_blank" rel="noopener">唐吉訶德</a>、<a href="https://www.google.com/maps/search/?api=1&amp;query=%E7%AC%AC%E4%B8%80%E7%89%A7%E5%BF%97%E5%85%AC%E8%A8%AD%E5%B8%82%E5%A0%B4" target="_blank" rel="noopener">牧志市場</a></b>Lawson 在てんぶす那覇 1F，24 小時</div></li>
+        <li data-go="taxi terminal"><span class="t">18:35</span><span class="m"><svg class="ico"><use href="#i-taxi"/></svg></span><div class="d"><b>計程車回<a href="https://www.google.com/maps/search/?api=1&amp;query=%E9%82%A3%E8%A6%87%E3%82%AF%E3%83%AB%E3%83%BC%E3%82%BA%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%8A%E3%83%AB" target="_blank" rel="noopener">航廈</a></b>約 10–15 分</div></li>
+        <li class="end" data-go="at terminal"><span class="t">19:00</span><span class="m"><svg class="ico"><use href="#i-ship"/></svg></span><div class="d"><b>回到航廈</b></div></li>
       </ol>
     </div>
   </div>
@@ -753,7 +764,7 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
 </section>
 </main>
 
-<footer>v2.0・2026/10/05 更新・實際以船上日報 The Daily 與現場公告為準</footer>
+<footer>v2.1・2026/10/05 更新・實際以船上日報 The Daily 與現場公告為準</footer>
 </div>
 
 <script>
@@ -942,6 +953,136 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(code.textContent.trim()).then(function(){ done('已複製'); }, fallback);
     } else { fallback(); }
+  });
+
+  // Naha route maps, drawn from the plan lists. A plan is <ol class="plan" data-from="terminal">;
+  // each step <li data-go="walk naminoue"> lists its legs as "mode place", comma-separated.
+  // Modes: walk / taxi / rail (along the monorail) / at (no move, only marks the place). A place
+  // can also be a path (國際通, walked first → last point). To change a plan, edit the list items
+  // and add any new spot to NAHA.places; the map and the step ⇄ map highlighting follow.
+  var NAHA = {
+    box: [26.2105, 127.6680, 26.2330, 127.7010], // S, W, N, E; grows to fit places outside it
+    places: { // key: [lat, lon, map label, label dx, dy, text-anchor], from OpenStreetMap
+      terminal: [26.22566, 127.67483, '航廈', 9, 4], naminoue: [26.22056, 127.67114, '波上宮'],
+      tsuboya: [26.21291, 127.69181, '壺屋陶器街'], market: [26.21455, 127.68829, '牧志市場', 3, 16, 'middle'],
+      kenchomae: [26.21448, 127.67961, '縣廳前', 0, 17, 'middle'], makishi: [26.21719, 127.69259, '牧志站'],
+      omoromachi: [26.22277, 127.69841, 'おもろまち站', -8, 16, 'end'], muji: [26.22578, 127.69391, '無印良品'],
+      uniqlo: [26.23066, 127.68962, 'UNIQLO'], lawson: [26.21615, 127.68918, 'Lawson', 0, -9, 'middle'],
+      donki: [26.21507, 127.68403, '唐吉訶德', 0, 16, 'middle'],
+      miebashi: [26.21922, 127.68439], asato: [26.21680, 127.69576] // monorail stops without a label
+    },
+    paths: {
+      kokusai: { label: '國際通', at: [26.2154, 127.6808], // walked east → west
+        pts: [[26.2172, 127.6926], [26.2162, 127.6892], [26.2158, 127.6859], [26.2151, 127.6840], [26.2141, 127.6828], [26.2147, 127.6802]] }
+    },
+    street: [[26.2147, 127.6802], [26.2141, 127.6828], [26.2151, 127.6840], [26.2158, 127.6859], [26.2162, 127.6892], [26.2172, 127.6926], [26.2185, 127.6937]],
+    rail: ['kenchomae', 'miebashi', 'makishi', 'asato', 'omoromachi'], // ゆいレール stops on the map, in line order
+    coast: [[26.2105, 127.6680], [26.2170, 127.6690], [26.2195, 127.6698], [26.2213, 127.6703], [26.2232, 127.6714],
+            [26.2252, 127.6733], [26.2275, 127.6747], [26.2290, 127.6768], [26.2310, 127.6788], [26.2330, 127.6800]] // south → north
+  };
+  function nahaMap(list){
+    var P = NAHA.places, start = list.getAttribute('data-from'), cur = P[start], curKey = start;
+    var legs = [], marks = {}, seen = [start];
+    function mark(k, s){ (marks[k] = marks[k] || []).push(s); if (seen.indexOf(k) < 0) seen.push(k); }
+    Array.prototype.forEach.call(list.children, function(li, i){
+      var s = String(i + 1);
+      (li.getAttribute('data-go') || '').split(',').forEach(function(leg){
+        var w = leg.trim().split(/\s+/), mode = w[0], key = w[1], path = NAHA.paths[key], to = P[key];
+        if (!key || !(path || to)) return;
+        mark(key, s);
+        if (mode === 'at') return;
+        if (path) {
+          legs.push({ s: s, cls: 'r-' + mode, pts: [cur, path.pts[0]] }, { s: s, cls: 'r-street', pts: path.pts });
+          cur = path.pts[path.pts.length - 1]; curKey = null;
+          return;
+        }
+        var pts = [cur, to], a = NAHA.rail.indexOf(curKey), b = NAHA.rail.indexOf(key);
+        if (mode === 'rail' && a >= 0 && b >= 0) {
+          pts = [];
+          for (var j = a; ; j += a < b ? 1 : -1) { pts.push(P[NAHA.rail[j]]); if (j === b) break; }
+        }
+        legs.push({ s: s, cls: 'r-' + mode, pts: pts });
+        cur = to; curKey = key;
+      });
+    });
+
+    // map frame: the default box, grown to fit every place and leg
+    var S = NAHA.box[0], W = NAHA.box[1], N = NAHA.box[2], E = NAHA.box[3], pad = 0.002;
+    function fit(p){ S = Math.min(S, p[0] - pad); N = Math.max(N, p[0] + pad); W = Math.min(W, p[1] - pad); E = Math.max(E, p[1] + pad); }
+    seen.forEach(function(k){ if (P[k]) fit(P[k]); });
+    legs.forEach(function(l){ l.pts.forEach(fit); });
+    var COS = Math.cos((S + N) / 2 * Math.PI / 180), K = 360 / ((E - W) * COS), HT = Math.round((N - S) * K);
+    function xy(p){ return [+((p[1] - W) * COS * K).toFixed(1), +((N - p[0]) * K).toFixed(1)]; }
+    function pts(a){ return a.map(function(p){ return xy(p).join(','); }).join(' '); }
+    function ds(k){ return marks[k] ? ' data-s="' + marks[k].join(' ') + '"' : ''; }
+
+    var coast = NAHA.coast.slice(), bar = 0.5 / 111 * K; // 500 m scale bar
+    if (coast[0][0] > S) coast.unshift([S, coast[0][1]]);
+    if (coast[coast.length - 1][0] < N) coast.push([N, coast[coast.length - 1][1]]);
+    var svg = [
+      '<rect class="land" x="0" y="0" width="360" height="' + HT + '"/>',
+      '<polygon class="sea" points="' + pts(coast.concat([[N, W], [S, W]])) + '"/>',
+      '<text class="sea-t" x="10" y="40">海</text>',
+      '<polyline class="street" points="' + pts(NAHA.street) + '"/>',
+      '<polyline class="rail" points="' + pts(NAHA.rail.map(function(k){ return P[k]; })) + '"/>'
+    ];
+    NAHA.rail.forEach(function(k){ var c = xy(P[k]); svg.push('<circle class="stn" cx="' + c[0] + '" cy="' + c[1] + '" r="2.6"/>'); });
+    svg.push('<g class="north"><path d="M342,26 l6,-16 l6,16 l-6,-5z"/><text x="348" y="38">N</text></g>',
+             '<g class="scale"><path d="M12,' + (HT - 14) + ' v4 h' + bar.toFixed(1) + ' v-4"/><text x="' + (12 + bar / 2).toFixed(1) + '" y="' + (HT - 18) + '">500 m</text></g>');
+    legs.forEach(function(l){
+      if (l.pts.length === 2 && l.pts[0][0] === l.pts[1][0] && l.pts[0][1] === l.pts[1][1]) return; // already there
+      svg.push('<polyline class="' + l.cls + '" data-s="' + l.s + '" points="' + pts(l.pts) + '"/>');
+    });
+    Object.keys(NAHA.paths).forEach(function(k){
+      var p = NAHA.paths[k], c = xy(p.at);
+      svg.push('<text class="street-t"' + ds(k) + ' x="' + c[0] + '" y="' + c[1] + '" text-anchor="middle">' + p.label + '</text>');
+    });
+    seen.filter(function(k){ return P[k] && k !== start; }).concat([start]).forEach(function(k){
+      var p = P[k], c = xy(p), end = k === start;
+      svg.push('<circle class="pt' + (end ? ' end' : '') + '"' + ds(k) + ' cx="' + c[0] + '" cy="' + c[1] + '" r="' + (end ? 6 : 4.6) + '"/>');
+      if (p[2]) svg.push('<text class="lbl"' + ds(k) + ' x="' + (c[0] + (p[3] == null ? 8 : p[3])).toFixed(1) + '" y="' +
+                         (c[1] + (p[4] == null ? 4 : p[4])).toFixed(1) + '" text-anchor="' + (p[5] || 'start') + '">' + p[2] + '</text>');
+    });
+
+    var used = legs.map(function(l){ return l.cls === 'r-street' ? 'r-walk' : l.cls; }).join(' ');
+    var keys = [['walk', '步行'], ['taxi', '計程車'], ['rail', '單軌']].filter(function(m){ return used.indexOf('r-' + m[0]) >= 0; });
+    var names = seen.map(function(k){ return P[k] ? P[k][2] : NAHA.paths[k].label; }).filter(Boolean);
+    list.insertAdjacentHTML('beforebegin',
+      '<figure class="map"><svg viewBox="0 0 360 ' + HT + '" role="img" aria-label="路線地圖：' + names.join('、') + '">' + svg.join('') + '</svg>' +
+      '<figcaption>' + keys.map(function(m){ return '<span><i class="k-' + m[0] + '"></i>' + m[1] + '</span>'; }).join('') +
+      '<span class="muted">那霸市區・沖繩本島南部西岸，依實際位置等比例；灰線為單軌電車</span></figcaption></figure>' +
+      '<p class="maphint">點選行程，地圖會標出對應的路線和地點</p>');
+    return list.previousElementSibling.previousElementSibling;
+  }
+  // hover (mouse) or tap a step to light up its route and places on the map, and the other way round
+  document.querySelectorAll('ol.plan[data-from]').forEach(function(list){
+    var map;
+    try { map = nahaMap(list); } catch (e) { return; }
+    var steps = Array.prototype.slice.call(list.children), marks = map.querySelectorAll('[data-s]');
+    function show(ns){
+      map.classList.toggle('focus', ns.length > 0);
+      marks.forEach(function(el){
+        var own = el.getAttribute('data-s').split(' ');
+        el.classList.toggle('on', ns.some(function(n){ return own.indexOf(n) >= 0; }));
+      });
+      steps.forEach(function(li, i){ li.classList.toggle('on', ns.indexOf(String(i + 1)) >= 0); });
+    }
+    function bind(el, ns){
+      el.addEventListener('pointerenter', function(e){ if (e.pointerType === 'mouse') show(ns); });
+      el.addEventListener('pointerleave', function(e){ if (e.pointerType === 'mouse') show([]); });
+      el.addEventListener('click', function(){ show(ns); });
+    }
+    steps.forEach(function(li, i){
+      var ns = [String(i + 1)];
+      bind(li, ns);
+      li.addEventListener('focusin', function(){ show(ns); });
+      li.addEventListener('focusout', function(){ show([]); });
+    });
+    marks.forEach(function(el){ bind(el, el.getAttribute('data-s').split(' ')); });
+    document.addEventListener('click', function(e){
+      var hit = e.target.closest && e.target.closest('[data-s], li');
+      if (!hit || !(list.contains(hit) || map.contains(hit))) show([]);
+    });
   });
 
   // highlight the current station in the sticky nav
