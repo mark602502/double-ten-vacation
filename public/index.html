@@ -64,6 +64,10 @@ a{color:var(--accent)}
 .facts dt{font-size:11px;color:var(--pass-muted);letter-spacing:.06em}
 .facts dd{margin:2px 0 0;font-family:var(--font-num);font-size:21px;font-weight:700;line-height:1.1}
 .facts dd small{display:block;font-family:var(--font-body);font-size:11px;font-weight:400;color:var(--pass-muted)}
+.crew{margin-top:14px}
+.crew-h{font-size:11px;color:var(--pass-muted);letter-spacing:.06em}
+.crew ul{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.crew li{font-size:13px;line-height:1.4;padding:3px 10px;border-radius:999px;border:1px solid var(--pass-muted);color:var(--pass-ink)}
 .count{margin-top:14px;padding-top:12px;border-top:1px solid var(--pass-muted)}
 .count .big{display:flex;align-items:baseline;gap:4px 10px;flex-wrap:wrap}
 .count b{font-family:var(--font-num);font-size:36px;font-weight:700;line-height:1}
@@ -312,7 +316,7 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
 <div class="wrap">
 
 <header class="pass" aria-label="航程">
-  <div class="top"><span>STARCRUISES · 探索星號</span><span><span class="num" style="font-size:15px">2 晚</span> · <span class="num" style="font-size:15px">v1.5</span></span></div>
+  <div class="top"><span>STARCRUISES · 探索星號</span><span><span class="num" style="font-size:15px">2 晚</span> · <span class="num" style="font-size:15px">v1.6</span></span></div>
   <div class="route">
     <div><div class="small" style="color:var(--pass-muted)">TWKEL</div><div class="code">KEL</div><div class="city">基隆 西岸旅客中心</div></div>
     <div class="mid"><svg class="ico lg"><use href="#i-ship"/></svg><span class="num" style="font-size:15px">⇄</span></div>
@@ -324,6 +328,7 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
     <div><dt>靠港</dt><dd>10/12 13:00<small>週一・日本時間</small></dd></div>
     <div><dt>回港</dt><dd>10/13 15:00<small>週二・基隆</small></dd></div>
   </dl>
+  <div class="crew" aria-label="參與人員"><div class="crew-h">參與人員・9 人</div><ul><li>北極光</li><li>哭泣壯漢</li><li>美姨</li><li>魔法阿罵</li><li>鯊魚嫣</li><li>雞哥</li><li>阿杰</li><li>顥天冕下</li><li>最美女神</li></ul></div>
   <div class="count" id="count">
     <div class="big"><b>10/11 13:00</b><span class="small" style="color:var(--pass-muted)">開始報到・16:00 登船截止</span></div>
     <div class="next">上下船都在<strong>基隆港西岸旅客中心</strong>（港西街 16 號）</div>
@@ -710,7 +715,7 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
 </section>
 </main>
 
-<footer>v1.5・2026/10/05 更新・實際以船上日報 The Daily 與現場公告為準</footer>
+<footer>v1.6・2026/10/05 更新・實際以船上日報 The Daily 與現場公告為準</footer>
 </div>
 
 <script>
