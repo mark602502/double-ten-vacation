@@ -210,6 +210,7 @@ a{color:var(--accent)}
 .plan .m .ico{width:16px;height:16px}
 .plan .d{padding:3px 0 14px;font-size:14px}
 .plan .d b{display:block;font-size:15px}
+.plan .d a{text-underline-offset:3px}
 .plan li.end .t,.plan li.end .d b{color:var(--signal)}
 </style>
 <style>
@@ -302,7 +303,7 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
 <div class="wrap">
 
 <header class="pass" aria-label="航程">
-  <div class="top"><span>STARCRUISES · 探索星號</span><span><span class="num" style="font-size:15px">2 晚</span> · <span class="num" style="font-size:15px">v1.0</span></span></div>
+  <div class="top"><span>STARCRUISES · 探索星號</span><span><span class="num" style="font-size:15px">2 晚</span> · <span class="num" style="font-size:15px">v1.1</span></span></div>
   <div class="route">
     <div><div class="small" style="color:var(--pass-muted)">TWKEL</div><div class="code">KEL</div><div class="city">基隆 西岸旅客中心</div></div>
     <div class="mid"><svg class="ico lg"><use href="#i-ship"/></svg><span class="num" style="font-size:15px">⇄</span></div>
@@ -659,20 +660,22 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
     </div>
     <div class="panel p1"><span class="ph">方案 A 散步</span>
       <ol class="plan">
-        <li><span class="t">14:00</span><span class="m"><svg class="ico"><use href="#i-walk"/></svg></span><div class="d"><b>步行到波上宮</b></div></li>
-        <li><span class="t">14:45</span><span class="m"><svg class="ico"><use href="#i-taxi"/></svg></span><div class="d"><b>計程車到壺屋陶器街</b></div></li>
-        <li><span class="t">16:15</span><span class="m"><svg class="ico"><use href="#i-food"/></svg></span><div class="d"><b>牧志市場吃晚餐</b></div></li>
-        <li><span class="t">17:15</span><span class="m"><svg class="ico"><use href="#i-walk"/></svg></span><div class="d"><b>由東往西逛國際通</b></div></li>
-        <li><span class="t">18:30</span><span class="m"><svg class="ico"><use href="#i-walk"/></svg></span><div class="d"><b>從縣廳前端走回</b>15–20 分，或搭計程車</div></li>
-        <li class="end"><span class="t">19:00</span><span class="m"><svg class="ico"><use href="#i-ship"/></svg></span><div class="d"><b>回到航廈</b></div></li>
+        <li><span class="t">14:00</span><span class="m"><svg class="ico"><use href="#i-walk"/></svg></span><div class="d"><b>步行到<a href="https://www.google.com/maps/search/?api=1&amp;query=%E6%B3%A2%E4%B8%8A%E5%AE%AE" target="_blank" rel="noopener">波上宮</a></b></div></li>
+        <li><span class="t">14:45</span><span class="m"><svg class="ico"><use href="#i-taxi"/></svg></span><div class="d"><b>計程車到<a href="https://www.google.com/maps/search/?api=1&amp;query=%E5%A3%BA%E5%B1%8B%E3%82%84%E3%81%A1%E3%82%80%E3%82%93%E9%80%9A%E3%82%8A" target="_blank" rel="noopener">壺屋陶器街</a></b></div></li>
+        <li><span class="t">16:15</span><span class="m"><svg class="ico"><use href="#i-food"/></svg></span><div class="d"><b><a href="https://www.google.com/maps/search/?api=1&amp;query=%E7%AC%AC%E4%B8%80%E7%89%A7%E5%BF%97%E5%85%AC%E8%A8%AD%E5%B8%82%E5%A0%B4" target="_blank" rel="noopener">牧志市場</a>吃晚餐</b></div></li>
+        <li><span class="t">17:15</span><span class="m"><svg class="ico"><use href="#i-walk"/></svg></span><div class="d"><b>由東往西逛<a href="https://www.google.com/maps/search/?api=1&amp;query=%E9%82%A3%E8%A6%87%20%E5%9B%BD%E9%9A%9B%E9%80%9A%E3%82%8A" target="_blank" rel="noopener">國際通</a></b></div></li>
+        <li><span class="t">18:30</span><span class="m"><svg class="ico"><use href="#i-walk"/></svg></span><div class="d"><b>從<a href="https://www.google.com/maps/search/?api=1&amp;query=%E7%9C%8C%E5%BA%81%E5%89%8D%E9%A7%85%20%E9%82%A3%E8%A6%87" target="_blank" rel="noopener">縣廳前</a>端走回</b>15–20 分，或搭計程車</div></li>
+        <li class="end"><span class="t">19:00</span><span class="m"><svg class="ico"><use href="#i-ship"/></svg></span><div class="d"><b>回到<a href="https://www.google.com/maps/search/?api=1&amp;query=%E9%82%A3%E8%A6%87%E3%82%AF%E3%83%AB%E3%83%BC%E3%82%BA%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%8A%E3%83%AB" target="_blank" rel="noopener">航廈</a></b></div></li>
       </ol>
     </div>
     <div class="panel p2"><span class="ph">方案 B 購物</span>
       <ol class="plan">
-        <li><span class="t">14:00</span><span class="m"><svg class="ico"><use href="#i-taxi"/></svg></span><div class="d"><b>計程車到 T Galleria</b>約 15 分</div></li>
-        <li><span class="t">16:15</span><span class="m"><svg class="ico"><use href="#i-rail"/></svg></span><div class="d"><b>搭單軌到牧志</b></div></li>
-        <li><span class="t" style="font-size:15px">接著</span><span class="m"><svg class="ico"><use href="#i-bag"/></svg></span><div class="d"><b>國際通、唐吉訶德、牧志市場</b></div></li>
-        <li><span class="t">18:35</span><span class="m"><svg class="ico"><use href="#i-taxi"/></svg></span><div class="d"><b>計程車回航廈</b></div></li>
+        <li><span class="t">14:00</span><span class="m"><svg class="ico"><use href="#i-taxi"/></svg></span><div class="d"><b>計程車到<a href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%A6%E3%83%8B%E3%82%AF%E3%83%AD%20%E5%A4%A9%E4%B9%85%E3%82%8A%E3%81%86%E3%81%BC%E3%81%86%E6%A5%BD%E5%B8%82%E5%BA%97" target="_blank" rel="noopener">UNIQLO 天久りうぼう楽市店</a></b>約 10 分；營業 10:00–21:00</div></li>
+        <li><span class="t">14:45</span><span class="m"><svg class="ico"><use href="#i-taxi"/></svg></span><div class="d"><b>計程車到<a href="https://www.google.com/maps/search/?api=1&amp;query=T%E3%82%AE%E3%83%A3%E3%83%A9%E3%83%AA%E3%82%A2%20%E6%B2%96%E7%B8%84%20by%20DFS" target="_blank" rel="noopener">T Galleria</a></b>約 5 分（走路 16 分、上坡）；營業 10:00–20:00</div></li>
+        <li><span class="t">16:00</span><span class="m"><svg class="ico"><use href="#i-walk"/></svg></span><div class="d"><b>走到<a href="https://www.google.com/maps/search/?api=1&amp;query=%E7%84%A1%E5%8D%B0%E8%89%AF%E5%93%81%20%E9%82%A3%E8%A6%87%E3%83%A1%E3%82%A4%E3%83%B3%E3%83%97%E3%83%AC%E3%82%A4%E3%82%B9" target="_blank" rel="noopener">無印良品 那覇メインプレイス</a></b>6 分，在 2F；營業 9:00–22:00</div></li>
+        <li><span class="t">16:45</span><span class="m"><svg class="ico"><use href="#i-rail"/></svg></span><div class="d"><b><a href="https://www.google.com/maps/search/?api=1&amp;query=%E3%81%8A%E3%82%82%E3%82%8D%E3%81%BE%E3%81%A1%E9%A7%85" target="_blank" rel="noopener">おもろまち站</a>搭單軌到<a href="https://www.google.com/maps/search/?api=1&amp;query=%E7%89%A7%E5%BF%97%E9%A7%85" target="_blank" rel="noopener">牧志站</a></b>2 站</div></li>
+        <li><span class="t">17:00</span><span class="m"><svg class="ico"><use href="#i-bag"/></svg></span><div class="d"><b><a href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%AD%E3%83%BC%E3%82%BD%E3%83%B3%20%E5%9B%BD%E9%9A%9B%E9%80%9A%E7%89%A7%E5%BF%97%E5%BA%97%20%E3%81%A6%E3%82%93%E3%81%B6%E3%81%99%E9%82%A3%E8%A6%87" target="_blank" rel="noopener">Lawson 國際通牧志店</a>、<a href="https://www.google.com/maps/search/?api=1&amp;query=%E9%82%A3%E8%A6%87%20%E5%9B%BD%E9%9A%9B%E9%80%9A%E3%82%8A" target="_blank" rel="noopener">國際通</a>、<a href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%89%E3%83%B3%E3%83%BB%E3%82%AD%E3%83%9B%E3%83%BC%E3%83%86%20%E5%9B%BD%E9%9A%9B%E9%80%9A%E3%82%8A%E5%BA%97" target="_blank" rel="noopener">唐吉訶德</a>、<a href="https://www.google.com/maps/search/?api=1&amp;query=%E7%AC%AC%E4%B8%80%E7%89%A7%E5%BF%97%E5%85%AC%E8%A8%AD%E5%B8%82%E5%A0%B4" target="_blank" rel="noopener">牧志市場</a></b>Lawson 在てんぶす那覇 1F，24 小時</div></li>
+        <li><span class="t">18:35</span><span class="m"><svg class="ico"><use href="#i-taxi"/></svg></span><div class="d"><b>計程車回<a href="https://www.google.com/maps/search/?api=1&amp;query=%E9%82%A3%E8%A6%87%E3%82%AF%E3%83%AB%E3%83%BC%E3%82%BA%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%8A%E3%83%AB" target="_blank" rel="noopener">航廈</a></b>約 10–15 分</div></li>
         <li class="end"><span class="t">19:00</span><span class="m"><svg class="ico"><use href="#i-ship"/></svg></span><div class="d"><b>回到航廈</b></div></li>
       </ol>
     </div>
@@ -697,7 +700,7 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
 </section>
 </main>
 
-<footer>v1.0・2026/10/05 更新・實際以船上日報 The Daily 與現場公告為準</footer>
+<footer>v1.1・2026/10/05 更新・實際以船上日報 The Daily 與現場公告為準</footer>
 </div>
 
 <script>
