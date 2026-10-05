@@ -357,7 +357,7 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
 <div class="wrap">
 
 <header class="pass" aria-label="航程">
-  <div class="top"><span>STARCRUISES · 探索星號</span><span><span class="num" style="font-size:15px">2 晚</span> · <span class="num" style="font-size:15px">v2.1</span></span></div>
+  <div class="top"><span>STARCRUISES · 探索星號</span><span><span class="num" style="font-size:15px">2 晚</span> · <span class="num" style="font-size:15px">v2.2</span></span></div>
   <div class="route">
     <div><div class="small" style="color:var(--pass-muted)">TWKEL</div><div class="code">KEL</div><div class="city">基隆 西岸旅客中心</div></div>
     <div class="mid"><svg class="ico lg"><use href="#i-ship"/></svg><span class="num" style="font-size:15px">⇄</span></div>
@@ -764,7 +764,7 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
 </section>
 </main>
 
-<footer>v2.1・2026/10/05 更新・實際以船上日報 The Daily 與現場公告為準</footer>
+<footer>v2.2・2026/10/05 更新・實際以船上日報 The Daily 與現場公告為準</footer>
 </div>
 
 <script>
@@ -976,7 +976,7 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
         pts: [[26.2172, 127.6926], [26.2162, 127.6892], [26.2158, 127.6859], [26.2151, 127.6840], [26.2141, 127.6828], [26.2147, 127.6802]] }
     },
     street: [[26.2147, 127.6802], [26.2141, 127.6828], [26.2151, 127.6840], [26.2158, 127.6859], [26.2162, 127.6892], [26.2172, 127.6926], [26.2185, 127.6937]],
-    rail: ['kenchomae', 'miebashi', 'makishi', 'asato', 'omoromachi'], // ゆいレール stops on the map, in line order
+    rail: ['kenchomae', 'miebashi', 'makishi', 'asato', 'omoromachi'], // ゆいレール stops in line order; a rail leg follows them
     coast: [[26.2105, 127.6680], [26.2170, 127.6690], [26.2195, 127.6698], [26.2213, 127.6703], [26.2232, 127.6714],
             [26.2252, 127.6733], [26.2275, 127.6747], [26.2290, 127.6768], [26.2310, 127.6788], [26.2330, 127.6800]] // south → north
   };
@@ -1023,10 +1023,8 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
       '<rect class="land" x="0" y="0" width="360" height="' + HT + '"/>',
       '<polygon class="sea" points="' + pts(coast.concat([[N, W], [S, W]])) + '"/>',
       '<text class="sea-t" x="10" y="40">海</text>',
-      '<polyline class="street" points="' + pts(NAHA.street) + '"/>',
-      '<polyline class="rail" points="' + pts(NAHA.rail.map(function(k){ return P[k]; })) + '"/>'
+      '<polyline class="street" points="' + pts(NAHA.street) + '"/>'
     ];
-    NAHA.rail.forEach(function(k){ var c = xy(P[k]); svg.push('<circle class="stn" cx="' + c[0] + '" cy="' + c[1] + '" r="2.6"/>'); });
     svg.push('<g class="north"><path d="M342,26 l6,-16 l6,16 l-6,-5z"/><text x="348" y="38">N</text></g>',
              '<g class="scale"><path d="M12,' + (HT - 14) + ' v4 h' + bar.toFixed(1) + ' v-4"/><text x="' + (12 + bar / 2).toFixed(1) + '" y="' + (HT - 18) + '">500 m</text></g>');
     legs.forEach(function(l){
@@ -1050,7 +1048,7 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
     list.insertAdjacentHTML('beforebegin',
       '<figure class="map"><svg viewBox="0 0 360 ' + HT + '" role="img" aria-label="路線地圖：' + names.join('、') + '">' + svg.join('') + '</svg>' +
       '<figcaption>' + keys.map(function(m){ return '<span><i class="k-' + m[0] + '"></i>' + m[1] + '</span>'; }).join('') +
-      '<span class="muted">那霸市區・沖繩本島南部西岸，依實際位置等比例；灰線為單軌電車</span></figcaption></figure>' +
+      '<span class="muted">那霸市區・沖繩本島南部西岸，依實際位置等比例</span></figcaption></figure>' +
       '<p class="maphint">點選行程，地圖會標出對應的路線和地點</p>');
     return list.previousElementSibling.previousElementSibling;
   }
