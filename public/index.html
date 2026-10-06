@@ -208,6 +208,8 @@ a{color:var(--accent)}
 .plan .d{padding:3px 0 14px;font-size:14px}
 .plan .d b{display:block;font-size:15px}
 .plan .d a{text-underline-offset:3px}
+.plan .d .km{font-family:var(--font-num);font-size:16px;font-weight:700;color:var(--accent);margin-right:6px}
+.plan .d .km small{font-family:var(--font-body);font-size:12px;font-weight:400;color:var(--muted)}
 .plan li.end .t,.plan li.end .d b{color:var(--signal)}
 /* plan step <-> map marks (JS adds .focus on the map and .on on the matching step and marks) */
 .plan li{margin:0 -8px;padding:0 8px;border-radius:12px;transition:background-color .15s;-webkit-tap-highlight-color:transparent}
@@ -219,6 +221,8 @@ a{color:var(--accent)}
 .map.focus [data-s].on{opacity:1}
 .map .pt.on{transform:scale(1.5)}
 .map .lbl.on,.map .street-t.on{fill:var(--accent);font-weight:700}
+.map .km{font-size:9.5px;font-weight:600;fill:var(--muted);paint-order:stroke;stroke:var(--surface);stroke-width:3px;stroke-linejoin:round}
+.map .km.on{fill:var(--accent);font-weight:700}
 .map .r-walk.on,.map .r-taxi.on,.map .r-street.on{stroke-width:3.6}
 .map .r-rail.on{stroke-width:5}
 </style>
@@ -357,7 +361,7 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
 <div class="wrap">
 
 <header class="pass" aria-label="航程">
-  <div class="top"><span>STARCRUISES · 探索星號</span><span><span class="num" style="font-size:15px">2 晚</span> · <span class="num" style="font-size:15px">v2.7</span></span></div>
+  <div class="top"><span>STARCRUISES · 探索星號</span><span><span class="num" style="font-size:15px">2 晚</span> · <span class="num" style="font-size:15px">v2.8</span></span></div>
   <div class="route">
     <div><div class="small" style="color:var(--pass-muted)">TWKEL</div><div class="code">KEL</div><div class="city">基隆 西岸旅客中心</div></div>
     <div class="mid"><svg class="ico lg"><use href="#i-ship"/></svg><span class="num" style="font-size:15px">⇄</span></div>
@@ -736,6 +740,7 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
   </div>
 
   <div class="sub"><svg class="ico"><use href="#i-walk"/></svg>行程方案・假設 14:00 上岸、19:00 回到航廈</div>
+  <p class="small muted" style="margin:-2px 0 8px">距離是路線距離；交通方式只是建議，依現場狀況（天氣、體力、排隊、塞車）調整</p>
   <div class="tabs">
     <div class="seg full needs-has" role="radiogroup" aria-label="選擇方案">
       <input type="radio" name="plan" id="pa" class="r1" checked><label for="pa">A 散步</label>
@@ -744,33 +749,33 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
     </div>
     <div class="panel p1"><span class="ph">方案 A 散步</span>
       <ol class="plan" data-from="terminal">
-        <li data-go="walk naminoue"><span class="t">14:00</span><span class="m"><svg class="ico"><use href="#i-walk"/></svg></span><div class="d"><b>步行到<a href="https://www.google.com/maps/search/?api=1&amp;query=%E6%B3%A2%E4%B8%8A%E5%AE%AE" target="_blank" rel="noopener">波上宮</a></b></div></li>
-        <li data-go="taxi tsuboya"><span class="t">14:45</span><span class="m"><svg class="ico"><use href="#i-taxi"/></svg></span><div class="d"><b>計程車到<a href="https://www.google.com/maps/search/?api=1&amp;query=%E5%A3%BA%E5%B1%8B%E3%82%84%E3%81%A1%E3%82%80%E3%82%93%E9%80%9A%E3%82%8A" target="_blank" rel="noopener">壺屋陶器街</a></b>用 App 叫車</div></li>
-        <li data-go="walk market"><span class="t">16:15</span><span class="m"><svg class="ico"><use href="#i-food"/></svg></span><div class="d"><b><a href="https://www.google.com/maps/search/?api=1&amp;query=%E7%AC%AC%E4%B8%80%E7%89%A7%E5%BF%97%E5%85%AC%E8%A8%AD%E5%B8%82%E5%A0%B4" target="_blank" rel="noopener">牧志市場</a>吃晚餐</b></div></li>
-        <li data-go="walk kokusai"><span class="t">17:15</span><span class="m"><svg class="ico"><use href="#i-walk"/></svg></span><div class="d"><b>由東往西逛<a href="https://www.google.com/maps/search/?api=1&amp;query=%E9%82%A3%E8%A6%87%20%E5%9B%BD%E9%9A%9B%E9%80%9A%E3%82%8A" target="_blank" rel="noopener">國際通</a></b></div></li>
-        <li data-go="walk kenchomae, walk terminal"><span class="t">18:30</span><span class="m"><svg class="ico"><use href="#i-walk"/></svg></span><div class="d"><b>從<a href="https://www.google.com/maps/search/?api=1&amp;query=%E7%9C%8C%E5%BA%81%E5%89%8D%E9%A7%85%20%E9%82%A3%E8%A6%87" target="_blank" rel="noopener">縣廳前</a>端走回</b>15–20 分，或搭計程車</div></li>
+        <li data-go="walk naminoue 0.9"><span class="t">14:00</span><span class="m"><svg class="ico"><use href="#i-walk"/></svg></span><div class="d"><b><a href="https://www.google.com/maps/search/?api=1&amp;query=%E6%B3%A2%E4%B8%8A%E5%AE%AE" target="_blank" rel="noopener">波上宮</a></b>建議步行，約 12 分</div></li>
+        <li data-go="taxi tsuboya 2.9"><span class="t">14:45</span><span class="m"><svg class="ico"><use href="#i-taxi"/></svg></span><div class="d"><b><a href="https://www.google.com/maps/search/?api=1&amp;query=%E5%A3%BA%E5%B1%8B%E3%82%84%E3%81%A1%E3%82%80%E3%82%93%E9%80%9A%E3%82%8A" target="_blank" rel="noopener">壺屋陶器街</a></b>建議用 App 叫計程車，約 10 分</div></li>
+        <li data-go="walk market 0.5"><span class="t">16:15</span><span class="m"><svg class="ico"><use href="#i-food"/></svg></span><div class="d"><b><a href="https://www.google.com/maps/search/?api=1&amp;query=%E7%AC%AC%E4%B8%80%E7%89%A7%E5%BF%97%E5%85%AC%E8%A8%AD%E5%B8%82%E5%A0%B4" target="_blank" rel="noopener">牧志市場</a>吃晚餐</b>建議步行，約 7 分</div></li>
+        <li data-go="walk kokusai 2.3"><span class="t">17:15</span><span class="m"><svg class="ico"><use href="#i-walk"/></svg></span><div class="d"><b>由東往西逛<a href="https://www.google.com/maps/search/?api=1&amp;query=%E9%82%A3%E8%A6%87%20%E5%9B%BD%E9%9A%9B%E9%80%9A%E3%82%8A" target="_blank" rel="noopener">國際通</a></b>步行：先走到東端（約 9 分），再往西逛</div></li>
+        <li data-go="walk kenchomae 0.2, walk terminal 1.6"><span class="t">18:30</span><span class="m"><svg class="ico"><use href="#i-walk"/></svg></span><div class="d"><b>從<a href="https://www.google.com/maps/search/?api=1&amp;query=%E7%9C%8C%E5%BA%81%E5%89%8D%E9%A7%85%20%E9%82%A3%E8%A6%87" target="_blank" rel="noopener">縣廳前</a>端回航廈</b>建議步行，約 20 分；累了就叫車</div></li>
         <li class="end" data-go="at terminal"><span class="t">19:00</span><span class="m"><svg class="ico"><use href="#i-ship"/></svg></span><div class="d"><b>回到<a href="https://www.google.com/maps/search/?api=1&amp;query=%E9%82%A3%E8%A6%87%E3%82%AF%E3%83%AB%E3%83%BC%E3%82%BA%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%8A%E3%83%AB" target="_blank" rel="noopener">航廈</a></b></div></li>
       </ol>
     </div>
     <div class="panel p2"><span class="ph">方案 B 購物</span>
       <ol class="plan" data-from="terminal">
-        <li data-go="walk naminoue"><span class="t">14:00</span><span class="m"><svg class="ico"><use href="#i-walk"/></svg></span><div class="d"><b>步行到<a href="https://www.google.com/maps/search/?api=1&amp;query=%E6%B3%A2%E4%B8%8A%E5%AE%AE" target="_blank" rel="noopener">波上宮</a></b>12 分</div></li>
-        <li data-go="walk kenchomae"><span class="t">14:40</span><span class="m"><svg class="ico"><use href="#i-walk"/></svg></span><div class="d"><b>步行到<a href="https://www.google.com/maps/search/?api=1&amp;query=%E9%82%A3%E8%A6%87%20%E5%9B%BD%E9%9A%9B%E9%80%9A%E3%82%8A" target="_blank" rel="noopener">國際通</a><a href="https://www.google.com/maps/search/?api=1&amp;query=%E7%9C%8C%E5%BA%81%E5%89%8D%E9%A7%85%20%E9%82%A3%E8%A6%87" target="_blank" rel="noopener">縣廳前</a>端</b>17 分</div></li>
-        <li data-go="walk donki, walk market, walk lawson, at kokusai"><span class="t">15:00</span><span class="m"><svg class="ico"><use href="#i-bag"/></svg></span><div class="d"><b>由西往東逛：<a href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%89%E3%83%B3%E3%83%BB%E3%82%AD%E3%83%9B%E3%83%BC%E3%83%86%20%E5%9B%BD%E9%9A%9B%E9%80%9A%E3%82%8A%E5%BA%97" target="_blank" rel="noopener">唐吉訶德</a>、<a href="https://www.google.com/maps/search/?api=1&amp;query=%E7%AC%AC%E4%B8%80%E7%89%A7%E5%BF%97%E5%85%AC%E8%A8%AD%E5%B8%82%E5%A0%B4" target="_blank" rel="noopener">牧志市場</a>、<a href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%AD%E3%83%BC%E3%82%BD%E3%83%B3%20%E5%9B%BD%E9%9A%9B%E9%80%9A%E7%89%A7%E5%BF%97%E5%BA%97%20%E3%81%A6%E3%82%93%E3%81%B6%E3%81%99%E9%82%A3%E8%A6%87" target="_blank" rel="noopener">Lawson 國際通牧志店</a></b>市場可吃晚餐；Lawson 在てんぶす那覇 1F，24 小時</div></li>
-        <li data-go="taxi ameku"><span class="t">17:00</span><span class="m"><svg class="ico"><use href="#i-taxi"/></svg></span><div class="d"><b>用 App 叫計程車到<a href="https://www.google.com/maps/search/?api=1&amp;query=%E5%A4%A9%E4%B9%85%E3%82%8A%E3%81%86%E3%81%BC%E3%81%86%E6%A5%BD%E5%B8%82" target="_blank" rel="noopener">天久りうぼう楽市</a></b>約 10 分，傍晚可能塞車</div></li>
+        <li data-go="walk naminoue 0.9"><span class="t">14:00</span><span class="m"><svg class="ico"><use href="#i-walk"/></svg></span><div class="d"><b><a href="https://www.google.com/maps/search/?api=1&amp;query=%E6%B3%A2%E4%B8%8A%E5%AE%AE" target="_blank" rel="noopener">波上宮</a></b>建議步行，約 12 分</div></li>
+        <li data-go="walk kenchomae 1.1"><span class="t">14:40</span><span class="m"><svg class="ico"><use href="#i-walk"/></svg></span><div class="d"><b><a href="https://www.google.com/maps/search/?api=1&amp;query=%E9%82%A3%E8%A6%87%20%E5%9B%BD%E9%9A%9B%E9%80%9A%E3%82%8A" target="_blank" rel="noopener">國際通</a><a href="https://www.google.com/maps/search/?api=1&amp;query=%E7%9C%8C%E5%BA%81%E5%89%8D%E9%A7%85%20%E9%82%A3%E8%A6%87" target="_blank" rel="noopener">縣廳前</a>端</b>建議步行，約 17 分</div></li>
+        <li data-go="walk donki 0.5, walk market 0.5, walk lawson 0.3, at kokusai"><span class="t">15:00</span><span class="m"><svg class="ico"><use href="#i-bag"/></svg></span><div class="d"><b>由西往東逛：<a href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%89%E3%83%B3%E3%83%BB%E3%82%AD%E3%83%9B%E3%83%BC%E3%83%86%20%E5%9B%BD%E9%9A%9B%E9%80%9A%E3%82%8A%E5%BA%97" target="_blank" rel="noopener">唐吉訶德</a>、<a href="https://www.google.com/maps/search/?api=1&amp;query=%E7%AC%AC%E4%B8%80%E7%89%A7%E5%BF%97%E5%85%AC%E8%A8%AD%E5%B8%82%E5%A0%B4" target="_blank" rel="noopener">牧志市場</a>、<a href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%AD%E3%83%BC%E3%82%BD%E3%83%B3%20%E5%9B%BD%E9%9A%9B%E9%80%9A%E7%89%A7%E5%BF%97%E5%BA%97%20%E3%81%A6%E3%82%93%E3%81%B6%E3%81%99%E9%82%A3%E8%A6%87" target="_blank" rel="noopener">Lawson 國際通牧志店</a></b>步行；市場可吃晚餐；Lawson 在てんぶす那覇 1F，24 小時</div></li>
+        <li data-go="taxi ameku 1.9"><span class="t">17:00</span><span class="m"><svg class="ico"><use href="#i-taxi"/></svg></span><div class="d"><b><a href="https://www.google.com/maps/search/?api=1&amp;query=%E5%A4%A9%E4%B9%85%E3%82%8A%E3%81%86%E3%81%BC%E3%81%86%E6%A5%BD%E5%B8%82" target="_blank" rel="noopener">天久りうぼう楽市</a></b>建議用 App 叫計程車，約 10 分（傍晚可能塞車）</div></li>
         <li data-go="at ameku"><span class="t">17:15</span><span class="m"><svg class="ico"><use href="#i-bag"/></svg></span><div class="d"><b><a href="https://www.google.com/maps/search/?api=1&amp;query=%E7%84%A1%E5%8D%B0%E8%89%AF%E5%93%81%20%E5%A4%A9%E4%B9%85" target="_blank" rel="noopener">無印良品 天久</a>＋<a href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%A6%E3%83%8B%E3%82%AF%E3%83%AD%20%E5%A4%A9%E4%B9%85%E3%82%8A%E3%81%86%E3%81%BC%E3%81%86%E6%A5%BD%E5%B8%82%E5%BA%97" target="_blank" rel="noopener">UNIQLO</a></b>兩家隔壁；無印 9:00–21:00、UNIQLO 10:00–21:00（只賣男女裝）</div></li>
-        <li data-go="taxi terminal"><span class="t">18:40</span><span class="m"><svg class="ico"><use href="#i-taxi"/></svg></span><div class="d"><b>用 App 叫計程車回<a href="https://www.google.com/maps/search/?api=1&amp;query=%E9%82%A3%E8%A6%87%E3%82%AF%E3%83%AB%E3%83%BC%E3%82%BA%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%8A%E3%83%AB" target="_blank" rel="noopener">航廈</a></b>約 15 分；叫不到走路 38 分</div></li>
+        <li data-go="taxi terminal 3.3"><span class="t">18:40</span><span class="m"><svg class="ico"><use href="#i-taxi"/></svg></span><div class="d"><b>回<a href="https://www.google.com/maps/search/?api=1&amp;query=%E9%82%A3%E8%A6%87%E3%82%AF%E3%83%AB%E3%83%BC%E3%82%BA%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%8A%E3%83%AB" target="_blank" rel="noopener">航廈</a></b>建議用 App 叫計程車，約 15 分；叫不到可步行（2.8 km，約 38 分）</div></li>
         <li class="end" data-go="at terminal"><span class="t">19:00</span><span class="m"><svg class="ico"><use href="#i-ship"/></svg></span><div class="d"><b>回到航廈</b></div></li>
       </ol>
     </div>
     <div class="panel p3"><span class="ph">方案 C 購物</span>
       <ol class="plan" data-from="terminal">
-        <li data-go="walk naminoue"><span class="t">14:00</span><span class="m"><svg class="ico"><use href="#i-walk"/></svg></span><div class="d"><b>步行到<a href="https://www.google.com/maps/search/?api=1&amp;query=%E6%B3%A2%E4%B8%8A%E5%AE%AE" target="_blank" rel="noopener">波上宮</a></b>12 分</div></li>
-        <li data-go="taxi ameku"><span class="t">14:40</span><span class="m"><svg class="ico"><use href="#i-taxi"/></svg></span><div class="d"><b>用 App 叫計程車到<a href="https://www.google.com/maps/search/?api=1&amp;query=%E5%A4%A9%E4%B9%85%E3%82%8A%E3%81%86%E3%81%BC%E3%81%86%E6%A5%BD%E5%B8%82" target="_blank" rel="noopener">天久りうぼう楽市</a></b>約 10 分</div></li>
+        <li data-go="walk naminoue 0.9"><span class="t">14:00</span><span class="m"><svg class="ico"><use href="#i-walk"/></svg></span><div class="d"><b><a href="https://www.google.com/maps/search/?api=1&amp;query=%E6%B3%A2%E4%B8%8A%E5%AE%AE" target="_blank" rel="noopener">波上宮</a></b>建議步行，約 12 分</div></li>
+        <li data-go="taxi ameku 3.0"><span class="t">14:40</span><span class="m"><svg class="ico"><use href="#i-taxi"/></svg></span><div class="d"><b><a href="https://www.google.com/maps/search/?api=1&amp;query=%E5%A4%A9%E4%B9%85%E3%82%8A%E3%81%86%E3%81%BC%E3%81%86%E6%A5%BD%E5%B8%82" target="_blank" rel="noopener">天久りうぼう楽市</a></b>建議用 App 叫計程車，約 10 分</div></li>
         <li data-go="at ameku"><span class="t">14:55</span><span class="m"><svg class="ico"><use href="#i-bag"/></svg></span><div class="d"><b><a href="https://www.google.com/maps/search/?api=1&amp;query=%E7%84%A1%E5%8D%B0%E8%89%AF%E5%93%81%20%E5%A4%A9%E4%B9%85" target="_blank" rel="noopener">無印良品 天久</a>＋<a href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%A6%E3%83%8B%E3%82%AF%E3%83%AD%20%E5%A4%A9%E4%B9%85%E3%82%8A%E3%81%86%E3%81%BC%E3%81%86%E6%A5%BD%E5%B8%82%E5%BA%97" target="_blank" rel="noopener">UNIQLO</a></b>兩家隔壁；無印 9:00–21:00、UNIQLO 10:00–21:00（只賣男女裝）</div></li>
-        <li data-go="taxi lawson"><span class="t">16:10</span><span class="m"><svg class="ico"><use href="#i-taxi"/></svg></span><div class="d"><b>用 App 叫計程車到<a href="https://www.google.com/maps/search/?api=1&amp;query=%E9%82%A3%E8%A6%87%20%E5%9B%BD%E9%9A%9B%E9%80%9A%E3%82%8A" target="_blank" rel="noopener">國際通</a>牧志端</b>約 10 分</div></li>
-        <li data-go="at lawson, walk market, walk donki, at kokusai"><span class="t">16:25</span><span class="m"><svg class="ico"><use href="#i-bag"/></svg></span><div class="d"><b>由東往西逛：<a href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%AD%E3%83%BC%E3%82%BD%E3%83%B3%20%E5%9B%BD%E9%9A%9B%E9%80%9A%E7%89%A7%E5%BF%97%E5%BA%97%20%E3%81%A6%E3%82%93%E3%81%B6%E3%81%99%E9%82%A3%E8%A6%87" target="_blank" rel="noopener">Lawson 國際通牧志店</a>、<a href="https://www.google.com/maps/search/?api=1&amp;query=%E7%AC%AC%E4%B8%80%E7%89%A7%E5%BF%97%E5%85%AC%E8%A8%AD%E5%B8%82%E5%A0%B4" target="_blank" rel="noopener">牧志市場</a>、<a href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%89%E3%83%B3%E3%83%BB%E3%82%AD%E3%83%9B%E3%83%BC%E3%83%86%20%E5%9B%BD%E9%9A%9B%E9%80%9A%E3%82%8A%E5%BA%97" target="_blank" rel="noopener">唐吉訶德</a></b>市場可吃晚餐；Lawson 在てんぶす那覇 1F，24 小時</div></li>
-        <li data-go="taxi terminal"><span class="t">18:35</span><span class="m"><svg class="ico"><use href="#i-taxi"/></svg></span><div class="d"><b>叫計程車回<a href="https://www.google.com/maps/search/?api=1&amp;query=%E9%82%A3%E8%A6%87%E3%82%AF%E3%83%AB%E3%83%BC%E3%82%BA%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%8A%E3%83%AB" target="_blank" rel="noopener">航廈</a></b>約 10 分；國際通路上計程車多，也可用 App</div></li>
+        <li data-go="taxi lawson 2.0"><span class="t">16:10</span><span class="m"><svg class="ico"><use href="#i-taxi"/></svg></span><div class="d"><b><a href="https://www.google.com/maps/search/?api=1&amp;query=%E9%82%A3%E8%A6%87%20%E5%9B%BD%E9%9A%9B%E9%80%9A%E3%82%8A" target="_blank" rel="noopener">國際通</a>牧志端</b>建議用 App 叫計程車，約 10 分</div></li>
+        <li data-go="at lawson, walk market 0.3, walk donki 0.5, at kokusai"><span class="t">16:25</span><span class="m"><svg class="ico"><use href="#i-bag"/></svg></span><div class="d"><b>由東往西逛：<a href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%AD%E3%83%BC%E3%82%BD%E3%83%B3%20%E5%9B%BD%E9%9A%9B%E9%80%9A%E7%89%A7%E5%BF%97%E5%BA%97%20%E3%81%A6%E3%82%93%E3%81%B6%E3%81%99%E9%82%A3%E8%A6%87" target="_blank" rel="noopener">Lawson 國際通牧志店</a>、<a href="https://www.google.com/maps/search/?api=1&amp;query=%E7%AC%AC%E4%B8%80%E7%89%A7%E5%BF%97%E5%85%AC%E8%A8%AD%E5%B8%82%E5%A0%B4" target="_blank" rel="noopener">牧志市場</a>、<a href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%89%E3%83%B3%E3%83%BB%E3%82%AD%E3%83%9B%E3%83%BC%E3%83%86%20%E5%9B%BD%E9%9A%9B%E9%80%9A%E3%82%8A%E5%BA%97" target="_blank" rel="noopener">唐吉訶德</a></b>步行；市場可吃晚餐；Lawson 在てんぶす那覇 1F，24 小時</div></li>
+        <li data-go="taxi terminal 1.9"><span class="t">18:35</span><span class="m"><svg class="ico"><use href="#i-taxi"/></svg></span><div class="d"><b>回<a href="https://www.google.com/maps/search/?api=1&amp;query=%E9%82%A3%E8%A6%87%E3%82%AF%E3%83%AB%E3%83%BC%E3%82%BA%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%8A%E3%83%AB" target="_blank" rel="noopener">航廈</a></b>建議叫計程車，約 10 分（國際通路上車多，也可用 App）</div></li>
         <li class="end" data-go="at terminal"><span class="t">19:00</span><span class="m"><svg class="ico"><use href="#i-ship"/></svg></span><div class="d"><b>回到航廈</b></div></li>
       </ol>
     </div>
@@ -798,7 +803,7 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
 </section>
 </main>
 
-<footer>v2.7・2026/10/06 更新・實際以船上日報 The Daily 與現場公告為準</footer>
+<footer>v2.8・2026/10/06 更新・實際以船上日報 The Daily 與現場公告為準</footer>
 </div>
 
 <script>
@@ -1064,12 +1069,12 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
     Array.prototype.forEach.call(list.children, function(li, i){
       var s = String(i + 1);
       (li.getAttribute('data-go') || '').split(',').forEach(function(leg){
-        var w = leg.trim().split(/\s+/), mode = w[0], key = w[1], path = NAHA.paths[key], to = P[key];
+        var w = leg.trim().split(/\s+/), mode = w[0], key = w[1], km = w[2], path = NAHA.paths[key], to = P[key]; // km: route distance
         if (!key || !(path || to)) return;
         mark(key, s);
         if (mode === 'at') return;
         if (path) {
-          legs.push({ s: s, cls: 'r-' + mode, pts: [cur, path.pts[0]] }, { s: s, cls: 'r-street', pts: path.pts });
+          legs.push({ s: s, cls: 'r-' + mode, pts: [cur, path.pts[0]] }, { s: s, cls: 'r-street', pts: path.pts, km: km });
           cur = path.pts[path.pts.length - 1]; curKey = null;
           return;
         }
@@ -1078,7 +1083,7 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
           pts = [];
           for (var j = a; ; j += a < b ? 1 : -1) { pts.push(P[NAHA.rail[j]]); if (j === b) break; }
         }
-        legs.push({ s: s, cls: 'r-' + mode, pts: pts });
+        legs.push({ s: s, cls: 'r-' + mode, pts: pts, km: km });
         cur = to; curKey = key;
       });
     });
@@ -1108,15 +1113,43 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
       if (l.pts.length === 2 && l.pts[0][0] === l.pts[1][0] && l.pts[0][1] === l.pts[1][1]) return; // already there
       svg.push('<polyline class="' + l.cls + '" data-s="' + l.s + '" points="' + pts(l.pts) + '"/>');
     });
+    // distance labels go where place names, the street name, points and other labels are not
+    var order = seen.filter(function(k){ return P[k] && k !== start; }).concat([start]), boxes = [];
+    function textW(s, size){ var w = 0; for (var i = 0; i < s.length; i++) w += s.charCodeAt(i) > 255 ? size : size * 0.62; return w; }
+    function boxAt(x, y, w, hgt, anchor){ var x0 = anchor === 'middle' ? x - w / 2 : anchor === 'end' ? x - w : x; return [x0 - 2, y - hgt, x0 + w + 2, y + 3]; }
+    function clear(b){ return b[0] >= 0 && b[2] <= 360 && b[1] >= 0 && b[3] <= HT && !boxes.some(function(o){ return b[0] < o[2] && b[2] > o[0] && b[1] < o[3] && b[3] > o[1]; }); }
+    function lbl(k){ var p = P[k], c = xy(p); return [c[0] + (p[3] == null ? 8 : p[3]), c[1] + (p[4] == null ? 4 : p[4]), p[5] || 'start']; }
+    Object.keys(NAHA.paths).forEach(function(k){ var c = xy(NAHA.paths[k].at); boxes.push(boxAt(c[0], c[1], textW(NAHA.paths[k].label, 10), 10, 'middle')); });
+    order.forEach(function(k){
+      var c = xy(P[k]); boxes.push([c[0] - 6, c[1] - 6, c[0] + 6, c[1] + 6]);
+      if (P[k][2]) { var L = lbl(k); boxes.push(boxAt(L[0], L[1], textW(P[k][2], 11), 11, L[2])); }
+    });
+    legs.forEach(function(l){
+      if (!l.km) return;
+      var q = l.pts.map(xy), seg = [], tot = 0, i, text = l.km + ' km', w = textW(text, 9.5);
+      for (i = 1; i < q.length; i++) { seg.push(Math.hypot(q[i][0] - q[i - 1][0], q[i][1] - q[i - 1][1])); tot += seg[i - 1]; }
+      if (tot < 24) return; // too short to label on the map; the step list still shows it
+      [0.5, 0.35, 0.65, 0.25, 0.75].some(function(t){
+        var at = tot * t, j = 0;
+        while (j < seg.length - 1 && at > seg[j]) { at -= seg[j]; j++; }
+        var p0 = q[j], p1 = q[j + 1], len = seg[j] || 1, ux = (p1[0] - p0[0]) / len, uy = (p1[1] - p0[1]) / len;
+        return [8, -8, 13, -13].some(function(off){
+          var x = p0[0] + ux * at - uy * off, y = p0[1] + uy * at + ux * off + 3, b = boxAt(x, y, w, 9, 'middle');
+          if (!clear(b)) return false;
+          boxes.push(b);
+          svg.push('<text class="km" data-s="' + l.s + '" x="' + x.toFixed(1) + '" y="' + y.toFixed(1) + '" text-anchor="middle">' + text + '</text>');
+          return true;
+        });
+      });
+    });
     Object.keys(NAHA.paths).forEach(function(k){
       var p = NAHA.paths[k], c = xy(p.at);
       svg.push('<text class="street-t"' + ds(k) + ' x="' + c[0] + '" y="' + c[1] + '" text-anchor="middle">' + p.label + '</text>');
     });
-    seen.filter(function(k){ return P[k] && k !== start; }).concat([start]).forEach(function(k){
-      var p = P[k], c = xy(p), end = k === start;
+    order.forEach(function(k){
+      var p = P[k], c = xy(p), end = k === start, L = lbl(k);
       svg.push('<circle class="pt' + (end ? ' end' : '') + '"' + ds(k) + ' cx="' + c[0] + '" cy="' + c[1] + '" r="' + (end ? 6 : 4.6) + '"/>');
-      if (p[2]) svg.push('<text class="lbl"' + ds(k) + ' x="' + (c[0] + (p[3] == null ? 8 : p[3])).toFixed(1) + '" y="' +
-                         (c[1] + (p[4] == null ? 4 : p[4])).toFixed(1) + '" text-anchor="' + (p[5] || 'start') + '">' + p[2] + '</text>');
+      if (p[2]) svg.push('<text class="lbl"' + ds(k) + ' x="' + L[0].toFixed(1) + '" y="' + L[1].toFixed(1) + '" text-anchor="' + L[2] + '">' + p[2] + '</text>');
     });
 
     var used = legs.map(function(l){ return l.cls === 'r-street' ? 'r-walk' : l.cls; }).join(' ');
@@ -1134,6 +1167,15 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
     var map;
     try { map = nahaMap(list); } catch (e) { return; }
     var steps = Array.prototype.slice.call(list.children), marks = map.querySelectorAll('[data-s]');
+    steps.forEach(function(li){ // the step's distance (sum of its legs, each leg in brackets) before the suggested way to go
+      var km = 0, parts = [], b = li.querySelector('.d b');
+      (li.getAttribute('data-go') || '').split(',').forEach(function(leg){
+        var d = leg.trim().split(/\s+/)[2];
+        if (d) { km += parseFloat(d); parts.push(d); }
+      });
+      if (km && b) b.insertAdjacentHTML('afterend', '<span class="km">' + (Math.round(km * 10) / 10).toFixed(1) + ' km' +
+        (parts.length > 1 ? '<small>（' + parts.join('＋') + '）</small>' : '') + '</span>');
+    });
     function show(ns){
       map.classList.toggle('focus', ns.length > 0);
       marks.forEach(function(el){
