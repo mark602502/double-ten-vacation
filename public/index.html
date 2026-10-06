@@ -67,7 +67,8 @@ a{color:var(--accent)}
 .facts dd small{display:block;font-family:var(--font-body);font-size:11px;font-weight:400;color:var(--pass-muted)}
 .crew{margin-top:14px}
 .crew-h{font-size:11px;color:var(--pass-muted);letter-spacing:.06em}
-.crew ul{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.crew .teams{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.crew ul{list-style:none;margin:0;padding:4px;display:flex;flex-wrap:wrap;gap:5px;border:1px dashed var(--pass-muted);border-radius:16px}
 .crew li{font-size:13px;line-height:1.4;padding:3px 10px;border-radius:999px;border:1px solid var(--pass-muted);color:var(--pass-ink)}
 .count{margin-top:14px;padding-top:12px;border-top:1px solid var(--pass-muted)}
 .count .big{display:flex;align-items:baseline;gap:4px 10px;flex-wrap:wrap}
@@ -361,7 +362,7 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
 <div class="wrap">
 
 <header class="pass" aria-label="航程">
-  <div class="top"><span>STARCRUISES · 探索星號</span><span><span class="num" style="font-size:15px">2 晚</span> · <span class="num" style="font-size:15px">v2.8</span></span></div>
+  <div class="top"><span>STARCRUISES · 探索星號</span><span><span class="num" style="font-size:15px">2 晚</span> · <span class="num" style="font-size:15px">v2.9</span></span></div>
   <div class="route">
     <div><div class="small" style="color:var(--pass-muted)">TWKEL</div><div class="code">KEL</div><div class="city">基隆 西岸旅客中心</div></div>
     <div class="mid"><svg class="ico lg"><use href="#i-ship"/></svg><span class="num" style="font-size:15px">⇄</span></div>
@@ -373,7 +374,7 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
     <div><dt>靠港</dt><dd>10/12 13:00<small>週一・日本時間</small></dd></div>
     <div><dt>回港</dt><dd>10/13 15:00<small>週二・基隆</small></dd></div>
   </dl>
-  <div class="crew" aria-label="參與人員"><div class="crew-h">參與人員・9 人</div><ul><li>北極光</li><li>哭泣壯漢</li><li>美姨</li><li>魔法阿罵</li><li>嫣</li><li>雞哥</li><li>阿杰</li><li>顥天冕下</li><li>最美女神</li></ul></div>
+  <div class="crew" aria-label="參與人員"><div class="crew-h">參與人員・9 人・3 組</div><div class="teams"><ul><li>顥天冕下</li><li>最美女神</li></ul><ul><li>北極光</li><li>哭泣壯漢</li><li>美姨</li><li>魔法阿罵</li><li>嫣</li></ul><ul><li>雞哥</li><li>阿杰</li></ul></div></div>
   <div class="count" id="count">
     <div class="big"><b>10/11 13:00</b><span class="small" style="color:var(--pass-muted)">開始報到・16:00 登船截止</span></div>
     <div class="next">上下船都在<strong>基隆港西岸旅客中心</strong>（港西街 16 號）</div>
@@ -522,7 +523,7 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
     <div class="grp">
       <div class="gh"><span class="badge"><svg class="ico"><use href="#i-taxi"/></svg></span>叫車 App</div>
       <div class="body">
-        <label class="ck"><input type="checkbox" id="c15"><span>裝好 Uber 或 GO（那霸用）<small>那霸都叫得到計程車，台灣門號可註冊；出發前在台灣先註冊、綁信用卡（簡訊驗證碼要在台灣收）</small></span></label>
+        <label class="ck"><input type="checkbox" id="c15"><span>裝好 Uber 或 GO（那霸用，每組至少一人）<small>那霸都叫得到計程車，台灣門號可註冊；出發前在台灣先註冊、綁信用卡（簡訊驗證碼要在台灣收）</small></span></label>
       </div>
     </div>
 
@@ -732,7 +733,7 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
       <div><h3>步行</h3><p>波上宮 12 分・國際通（縣廳前端）15–20 分・單軌縣廳前站 15–19 分</p></div>
       <div class="r"><div class="big">12–20<small>分</small></div></div></div>
     <div class="mode"><span class="ic"><svg class="ico"><use href="#i-taxi"/></svg></span>
-      <div><h3>計程車</h3><p>航廈 1F 排班，排 10–60 分（估）；1F 觀光服務台有會說中文的人員；上車給司機看日文店名或 Google 地圖畫面；起跳 ¥650（1.65 km 內），可用 Uber、GO 叫車</p></div>
+      <div><h3>計程車</h3><p>航廈 1F 排班，排 10–60 分（估）；1F 觀光服務台有會說中文的人員；上車給司機看日文店名或 Google 地圖畫面；起跳 ¥650（1.65 km 內），可用 Uber、GO 叫車；一般計程車最多載 4 人，5 人那組要叫 2 台或預約大型計程車</p></div>
       <div class="r"><p class="small muted">國際通</p><div class="big" style="font-size:19px">¥750–1,300</div><p class="small muted">UNIQLO 天久</p><div class="big" style="font-size:19px">¥1,450–1,700</div></div></div>
     <div class="mode"><span class="ic"><svg class="ico"><use href="#i-rail"/></svg></span>
       <div><h3>單軌電車</h3><p>ゆいレール Yui Rail，那霸市區的高架電車；可刷信用卡感應或 Suica</p></div>
@@ -803,7 +804,7 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
 </section>
 </main>
 
-<footer>v2.8・2026/10/06 更新・實際以船上日報 The Daily 與現場公告為準</footer>
+<footer>v2.9・2026/10/06 更新・實際以船上日報 The Daily 與現場公告為準</footer>
 </div>
 
 <script>
