@@ -242,9 +242,8 @@ a{color:var(--accent)}
 .lot h3{font-size:15px}
 .lot .addr{font-size:12px;color:var(--muted)}
 .lot h3 a{text-underline-offset:3px}
-.walk{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;font-size:13px}
-.walk .bar{height:8px;border-radius:4px;background:var(--surface-2);overflow:hidden}
-.walk .bar i{display:block;height:100%;background:var(--accent);border-radius:4px}
+.walk{font-size:13px;color:var(--muted)}
+.walk b{color:var(--ink)}
 .fee{font-size:13px;color:var(--muted)}
 
 /* restaurant hours, drawn to scale 06:00 → 01:00 (19 h) */
@@ -362,7 +361,7 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
 <div class="wrap">
 
 <header class="pass" aria-label="航程">
-  <div class="top"><span>STARCRUISES · 探索星號</span><span><span class="num" style="font-size:15px">2 晚</span> · <span class="num" style="font-size:15px">v2.9</span></span></div>
+  <div class="top"><span>STARCRUISES · 探索星號</span><span><span class="num" style="font-size:15px">2 晚</span> · <span class="num" style="font-size:15px">v3.0</span></span></div>
   <div class="route">
     <div><div class="small" style="color:var(--pass-muted)">TWKEL</div><div class="code">KEL</div><div class="city">基隆 西岸旅客中心</div></div>
     <div class="mid"><svg class="ico lg"><use href="#i-ship"/></svg><span class="num" style="font-size:15px">⇄</span></div>
@@ -589,20 +588,20 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
     <div class="lot">
       <div class="row"><h3><a href="https://www.google.com/maps/search/?api=1&amp;query=%E5%9F%BA%E9%9A%86%E6%B8%AF%E7%81%A3%E4%B8%AD%E5%B1%B1%E8%B7%AFA%E5%8D%80%E6%B1%BD%E6%A9%9F%E8%BB%8A%E5%81%9C%E8%BB%8A%E5%A0%B4" target="_blank" rel="noopener">基隆港灣停車場（中山路 A 區）</a></h3><span class="big" style="font-size:22px"><small style="margin:0 3px 0 0">約</small>690</span></div>
       <span class="addr">中山一路 89 號・NT$40／小時；每日最高平日 NT$220、假日約 NT$250（每天 00:00 重算）；可用 LINE 預約（@928xzlbh）；限高 2.2 m</span>
-      <div class="walk"><span class="bar"><i style="width:53%"></i></span><span><b class="num" style="font-size:17px">500 m</b> 約 7 分</span></div>
+      <div class="walk">距港口 <b class="num" style="font-size:17px">500 m</b>・步行約 7 分</div>
     </div>
     <div class="lot">
       <div class="row"><h3><a href="https://www.google.com/maps/search/?api=1&amp;query=%E5%9F%BA%E9%9A%86%E6%B8%AF%E8%A5%BF3%E5%81%9C%E8%BB%8A%E5%A0%B4" target="_blank" rel="noopener">港西 3 停車場</a></h3><span class="big" style="font-size:22px"><small style="margin:0 3px 0 0">約</small>1,600</span></div>
       <span class="addr">入口：中山二路 36 巷・NT$30／小時，無每日上限</span>
-      <div class="walk"><span class="bar"><i style="width:58%"></i></span><span><b class="num" style="font-size:17px">550 m</b> 約 7 分</span></div>
+      <div class="walk">距港口 <b class="num" style="font-size:17px">550 m</b>・步行約 7 分</div>
     </div>
     <div class="lot">
       <div class="row"><h3><a href="https://www.google.com/maps/search/?api=1&amp;query=%E5%9F%BA%E9%9A%86%E6%9D%B1%E5%B2%B8%E5%9C%B0%E4%B8%8B%E5%81%9C%E8%BB%8A%E5%A0%B4" target="_blank" rel="noopener">東岸地下停車場</a></h3><span class="big" style="font-size:22px"><small style="margin:0 3px 0 0">約</small>1,600</span></div>
       <span class="addr">仁二路 236 號（微風東岸 B1–B4）・NT$30／小時</span>
-      <div class="walk"><span class="bar"><i style="width:100%"></i></span><span><b class="num" style="font-size:17px">950 m</b> 約 14 分</span></div>
+      <div class="walk">距港口 <b class="num" style="font-size:17px">950 m</b>・步行約 14 分</div>
     </div>
   </div>
-  <p class="small muted" style="margin-top:6px">金額為本趟停車費估計（新台幣）；步行距離是到西岸旅客中心</p>
+  <p class="small muted" style="margin-top:6px">金額為本趟停車費估計（新台幣）；港口指西岸旅客中心</p>
 </section>
 
 <section class="sec" id="s4">
@@ -804,7 +803,7 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
 </section>
 </main>
 
-<footer>v2.9・2026/10/06 更新・實際以船上日報 The Daily 與現場公告為準</footer>
+<footer>v3.0・2026/10/06 更新・實際以船上日報 The Daily 與現場公告為準</footer>
 </div>
 
 <script>
