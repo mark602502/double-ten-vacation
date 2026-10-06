@@ -246,19 +246,22 @@ a{color:var(--accent)}
 .walk b{color:var(--ink)}
 .fee{font-size:13px;color:var(--muted)}
 
-/* restaurant hours, drawn to scale 06:00 → 01:00 (19 h) */
-.gantt{display:grid;gap:10px}
-.g-row{display:grid;grid-template-columns:62px 1fr;gap:8px;align-items:center}
-.g-row .n{font-size:13px;font-weight:600;line-height:1.2}
-.g-row .n small{display:block;font-weight:400;color:var(--muted);font-size:11px}
-.g-track{position:relative;height:26px;border-radius:6px;background:var(--surface-2)}
-.g-track i{position:absolute;top:3px;bottom:3px;border-radius:4px}
-.m1{background:var(--meal-1)}.m2{background:var(--meal-2)}.m3{background:var(--meal-3)}.m4{background:var(--meal-4)}
-.g-axis{position:relative;height:16px;margin-left:70px;font-family:var(--font-num);font-size:13px;color:var(--muted)}
-.g-axis span{position:absolute;transform:translateX(-50%)}
-.g-legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;color:var(--muted);margin-top:4px}
-.g-legend span{display:inline-flex;align-items:center;gap:5px}
-.g-legend i{width:10px;height:10px;border-radius:3px;display:inline-block}
+/* section 6: 免費 / 付費 switch (radio + :has; without :has both show with headings) */
+.acts .ah{display:block;font-weight:600;margin:16px 0 6px}
+@supports selector(:has(a)){
+  .acts .ah{display:none}
+  .acts:has(#act-free:checked) .paid{display:none}
+  .acts:has(#act-paid:checked) .free{display:none}
+}
+.meals{width:100%;border-collapse:collapse;font-size:13px}
+.meals th,.meals td{padding:8px 3px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.meals thead th{font-size:12px;font-weight:600;color:var(--muted);padding-top:0}
+.meals tbody th{font-weight:600;font-size:14px}
+.meals tbody th small{display:block;font-weight:400;font-size:11px;color:var(--muted)}
+.meals td{font-family:var(--font-num);font-size:15px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.meals tbody tr:last-child th,.meals tbody tr:last-child td{border-bottom:0}
+.tips{margin:8px 0 0;padding-left:18px;font-size:14px;display:grid;gap:4px}
+.grp .body .tips{margin:0}
 
 /* Naha port day bar, 13:00 → 21:00 Japan time (8 h) */
 .portbar{position:relative;margin:34px 0 26px}
@@ -361,7 +364,7 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
 <div class="wrap">
 
 <header class="pass" aria-label="航程">
-  <div class="top"><span>STARCRUISES · 探索星號</span><span><span class="num" style="font-size:15px">2 晚</span> · <span class="num" style="font-size:15px">v3.0</span></span></div>
+  <div class="top"><span>STARCRUISES · 探索星號</span><span><span class="num" style="font-size:15px">2 晚</span> · <span class="num" style="font-size:15px">v3.1</span></span></div>
   <div class="route">
     <div><div class="small" style="color:var(--pass-muted)">TWKEL</div><div class="code">KEL</div><div class="city">基隆 西岸旅客中心</div></div>
     <div class="mid"><svg class="ico lg"><use href="#i-ship"/></svg><span class="num" style="font-size:15px">⇄</span></div>
@@ -639,64 +642,89 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
 
 <section class="sec" id="s6">
   <div class="sec-h"><span class="no">06</span><h2>船上必玩攻略</h2><span class="aside small muted">台灣時間</span></div>
-  <div class="tabs">
-    <div class="seg full needs-has" role="radiogroup" aria-label="選擇日期">
-      <input type="radio" name="day" id="d1" class="r1" checked><label for="d1">10/11 登船</label>
-      <input type="radio" name="day" id="d2" class="r2"><label for="d2">10/12 那霸</label>
-      <input type="radio" name="day" id="d3" class="r3"><label for="d3">10/13 回程</label>
+  <div class="acts">
+    <div class="seg full needs-has" role="radiogroup" aria-label="免費或付費">
+      <input type="radio" name="act" id="act-free" checked><label for="act-free">免費</label>
+      <input type="radio" name="act" id="act-paid"><label for="act-paid">付費</label>
     </div>
-    <div class="panel p1"><span class="ph">10/11 登船日</span>
-      <ol class="plan">
-        <li><span class="t">14:00</span><span class="m"><svg class="ico"><use href="#i-food"/></svg></span><div class="d"><b>上船先去免費餐廳吃</b>泳衣、藥品、充電器放隨身包，不用等行李</div></li>
-        <li><span class="t" style="font-size:15px">接著</span><span class="m"><svg class="ico"><use href="#i-ship"/></svg></span><div class="d"><b>趁人少逛船、玩泳池</b>到 7F 接待處領暈船藥</div></li>
-        <li><span class="t" style="font-size:15px">預約</span><span class="m"><svg class="ico"><use href="#i-star"/></svg></span><div class="d"><b>Umi Uma 鐵板燒（付費）</b>想吃就一上船先預約</div></li>
-        <li><span class="t">17:00</span><span class="m"><svg class="ico"><use href="#i-sun"/></svg></span><div class="d"><b>甲板看出港</b>7F 悠閒大道（戶外步道）或 13F 船頭瞭望台；日落約 17:30</div></li>
-        <li><span class="t" style="font-size:15px">晚上</span><span class="m"><svg class="ico"><use href="#i-star"/></svg></span><div class="d"><b>星座劇院「炫麗啟航」</b>只有第一晚，結尾邀觀眾上台跳舞</div></li>
-        <li><span class="t">23:00</span><span class="m"><svg class="ico"><use href="#i-moon"/></svg></span><div class="d"><b>麗都宵夜 23:00–01:00</b>賭場進公海後才開</div></li>
-      </ol>
+    <div class="free"><span class="ah">免費</span>
+    <div class="tabs" style="margin-top:10px">
+      <div class="seg full needs-has" role="radiogroup" aria-label="選擇日期">
+        <input type="radio" name="day" id="d1" class="r1" checked><label for="d1">10/11 登船</label>
+        <input type="radio" name="day" id="d2" class="r2"><label for="d2">10/12 那霸</label>
+        <input type="radio" name="day" id="d3" class="r3"><label for="d3">10/13 回程</label>
+      </div>
+      <div class="panel p1"><span class="ph">10/11 登船日</span>
+        <ol class="plan">
+          <li><span class="t">14:00</span><span class="m"><svg class="ico"><use href="#i-food"/></svg></span><div class="d"><b>上船先吃飯</b>登船日開哪間看郵報；泳衣、藥品、充電器放隨身包，不用等行李</div></li>
+          <li><span class="t" style="font-size:15px">接著</span><span class="m"><svg class="ico"><use href="#i-ship"/></svg></span><div class="d"><b>逛船</b>11F 船長室觀景廊（隔玻璃看駕駛艙、麗星歷史文物）、13F 慢跑道和籃球場；到 7F 接待處領暈船藥</div></li>
+          <li><span class="t" style="font-size:15px">接著</span><span class="m"><svg class="ico"><use href="#i-wave"/></svg></span><div class="d"><b>玩水</b>12F 羅馬泳池、SPA 池、凱撒滑水梯（115 cm 以上）</div></li>
+          <li><span class="t">16:00</span><span class="m"><svg class="ico"><use href="#i-alert"/></svg></span><div class="d"><b>安全演習（強制）</b>約 16:00–16:30，帶船卡到集合站</div></li>
+          <li><span class="t">17:00</span><span class="m"><svg class="ico"><use href="#i-sun"/></svg></span><div class="d"><b>甲板看出港</b>13F（從 12F 泳池區走樓梯上去，有躺椅）或 7F 悠閒大道；日落約 17:30</div></li>
+          <li><span class="t" style="font-size:15px">晚上</span><span class="m"><svg class="ico"><use href="#i-star"/></svg></span><div class="d"><b>星座劇院啟航派對</b>第一晚限定，結尾邀觀眾上台跳舞</div></li>
+          <li><span class="t">23:00</span><span class="m"><svg class="ico"><use href="#i-moon"/></svg></span><div class="d"><b>麗都宵夜</b>23:00–01:00</div></li>
+        </ol>
+      </div>
+      <div class="panel p2"><span class="ph">10/12 那霸日</span>
+        <ol class="plan">
+          <li><span class="t">05:30</span><span class="m"><svg class="ico"><use href="#i-sun"/></svg></span><div class="d"><b>日出</b>到 13F 看</div></li>
+          <li><span class="t" style="font-size:15px">上午</span><span class="m"><svg class="ico"><use href="#i-wave"/></svg></span><div class="d"><b>泳池、滑水梯</b>時段看郵報；大廳有有氧、電影等活動</div></li>
+          <li><span class="t">12:00</span><span class="m"><svg class="ico"><use href="#i-food"/></svg></span><div class="d"><b>靠岸，先吃午餐</b>內艙通常較晚輪到入境，可先在麗都吃（以指定入境時段為準）</div></li>
+          <li class="end"><span class="t">19:00</span><span class="m"><svg class="ico"><use href="#i-ship"/></svg></span><div class="d"><b>最晚回船</b>晚餐：星夢到 20:30，百味軒、麗都到 21:00（靠港日可能調整）</div></li>
+          <li><span class="t">19:30</span><span class="m"><svg class="ico"><use href="#i-star"/></svg></span><div class="d"><b>上甲板看煙火</b>奧武山公園（那霸大綱挽祭），日本時間 20:30；看不看得到視位置而定</div></li>
+          <li><span class="t" style="font-size:15px">晚上</span><span class="m"><svg class="ico"><use href="#i-star"/></svg></span><div class="d"><b>劇院表演</b></div></li>
+        </ol>
+      </div>
+      <div class="panel p3"><span class="ph">10/13 回程日</span>
+        <ol class="plan">
+          <li><span class="t" style="font-size:15px">上午</span><span class="m"><svg class="ico"><use href="#i-star"/></svg></span><div class="d"><b>歡送節目</b>地點看郵報</div></li>
+          <li><span class="t" style="font-size:15px">之後</span><span class="m"><svg class="ico"><use href="#i-gate"/></svg></span><div class="d"><b>準備下船</b><a href="#s8">看第 8 節下船流程</a></div></li>
+        </ol>
+      </div>
     </div>
-    <div class="panel p2"><span class="ph">10/12 那霸日</span>
-      <ol class="plan">
-        <li><span class="t">05:30</span><span class="m"><svg class="ico"><use href="#i-sun"/></svg></span><div class="d"><b>日出</b>到 13F 看</div></li>
-        <li><span class="t" style="font-size:15px">上午</span><span class="m"><svg class="ico"><use href="#i-wave"/></svg></span><div class="d"><b>泳池、滑水梯</b>開放時段看郵報；大廳有賓果、有氧、電影</div></li>
-        <li><span class="t">12:00</span><span class="m"><svg class="ico"><use href="#i-food"/></svg></span><div class="d"><b>靠岸，先吃午餐</b>內艙通常較晚輪到入境，可先在麗都吃（以指定入境時段為準）</div></li>
-        <li class="end"><span class="t">19:00</span><span class="m"><svg class="ico"><use href="#i-ship"/></svg></span><div class="d"><b>最晚回船</b>晚餐：星夢到 20:30，百味軒、麗都到 21:00（靠港日可能調整）</div></li>
-        <li><span class="t">19:30</span><span class="m"><svg class="ico"><use href="#i-star"/></svg></span><div class="d"><b>上甲板看煙火</b>奧武山公園（那霸大綱挽祭），日本時間 20:30；看不看得到視位置而定</div></li>
-        <li><span class="t" style="font-size:15px">晚上</span><span class="m"><svg class="ico"><use href="#i-star"/></svg></span><div class="d"><b>劇院表演・7F 最後一晚特賣</b></div></li>
-      </ol>
+    <div class="sub"><svg class="ico"><use href="#i-food"/></svg>免費餐廳（參考時間，以郵報為準；靠港日會調整）</div>
+      <div class="card">
+        <table class="meals">
+          <thead><tr><th>餐廳</th><th>早餐</th><th>午餐</th><th>晚餐</th></tr></thead>
+          <tbody>
+            <tr><th>星夢<small>6F 船尾・中式套餐</small></th><td>07:00–09:30</td><td>11:30–14:00</td><td>17:30–20:30</td></tr>
+            <tr><th>百味軒<small>6F 船中・西式套餐</small></th><td>07:30–10:00</td><td>11:30–14:00</td><td>17:30–21:00</td></tr>
+            <tr><th>麗都<small>12F・自助</small></th><td>07:00–10:00</td><td>12:00–14:00</td><td>17:30–21:00</td></tr>
+          </tbody>
+        </table>
+        <ul class="tips">
+          <li>宵夜：麗都 23:00–01:00</li>
+          <li>同一餐期只能吃一次（換餐廳也算），第二次收 NT$350（早）／NT$450（午、晚）</li>
+          <li>開餐時最擠，收餐前約 1 小時去較快</li>
+          <li>套餐廳尖峰要領號碼牌；趕時間就吃麗都自助</li>
+        </ul>
+      </div>
+    <div class="sub"><svg class="ico"><use href="#i-star"/></svg>技巧</div>
+      <div class="tiles">
+        <div class="tile"><span class="ic"><svg class="ico"><use href="#i-star"/></svg></span><h3>劇院</h3><p>每晚 1–2 場、免費、先到先坐（前排保留皇宮、露台房）；提早 15–30 分入場；禁止錄影</p></div>
+        <div class="tile"><span class="ic"><svg class="ico"><use href="#i-wave"/></svg></span><h3>泳池</h3><p>12F 羅馬泳池 08:00–22:00；凱撒滑水梯只開特定時段（看郵報）、身高 115 cm 以上；清晨、用餐時段人少</p></div>
+        <div class="tile"><span class="ic"><svg class="ico"><use href="#i-doc"/></svg></span><h3>郵報 The Daily</h3><p>官方已改電子版，連船上 Wi-Fi 免費看；7F 接待處可能還有紙本（不送房）</p></div>
+      </div>
     </div>
-    <div class="panel p3"><span class="ph">10/13 回程日</span>
-      <ol class="plan">
-        <li><span class="t" style="font-size:15px">上午</span><span class="m"><svg class="ico"><use href="#i-star"/></svg></span><div class="d"><b>歡送節目</b>地點看郵報</div></li>
-        <li><span class="t" style="font-size:15px">之後</span><span class="m"><svg class="ico"><use href="#i-gate"/></svg></span><div class="d"><b>準備下船</b><a href="#s8">看第 8 節下船流程</a></div></li>
-      </ol>
+    <div class="paid"><span class="ah">付費（價格看郵報或現場）</span>
+      <p class="small muted" style="margin:10px 0 0">價格看郵報或現場；船上消費多數記在房帳，下船前結清</p>
+      <div class="grp">
+        <div class="gh"><span class="badge"><svg class="ico"><use href="#i-food"/></svg></span>餐飲</div>
+        <div class="body"><ul class="tips"><li>Umi Uma 海馬日本料理（含鐵板燒）：想吃一上船就先預約</li><li>藍湖美食：叻沙、牛肉麵，約 06:00–04:00</li><li>酒吧、咖啡、飲料</li></ul></div>
+      </div>
+      <div class="grp">
+        <div class="gh"><span class="badge"><svg class="ico"><use href="#i-star"/></svg></span>娛樂</div>
+        <div class="body"><ul class="tips"><li>賭場：港幣計價，進公海後才開；新會員送 HK$50 泥碼</li><li>12F 船頭 VR 探索館＋動感地帶：街機、VR，多數按次付費</li><li>卡拉 OK、麻將：按時段計費</li><li>靜音派對（星座劇院）：有排才有，看郵報</li></ul></div>
+      </div>
+      <div class="grp">
+        <div class="gh"><span class="badge"><svg class="ico"><use href="#i-bag"/></svg></span>放鬆、購物</div>
+        <div class="body"><ul class="tips"><li>SPA 按摩、美髮美甲</li><li>免稅店；10/12 晚上 7F 最後一晚特賣</li></ul></div>
+      </div>
+      <div class="grp">
+        <div class="gh"><span class="badge"><svg class="ico"><use href="#i-wifi"/></svg></span>網路</div>
+        <div class="body"><ul class="tips"><li>付費 Wi-Fi：方案和價格見第 2 節</li></ul></div>
+      </div>
     </div>
-  </div>
-
-  <div class="sub"><svg class="ico"><use href="#i-star"/></svg>技巧</div>
-  <div class="tiles">
-    <div class="tile"><span class="ic"><svg class="ico"><use href="#i-star"/></svg></span><h3>劇院</h3><p>每晚 1–2 場、免費、先到先坐（前排保留皇宮、露台房）；提早 15–30 分入場；禁止錄影</p></div>
-    <div class="tile"><span class="ic"><svg class="ico"><use href="#i-wave"/></svg></span><h3>泳池</h3><p>12F 羅馬泳池 08:00–22:00；凱撒滑水梯只開特定時段（看郵報）、身高 115 cm 以上；清晨、用餐時段人少</p></div>
-    <div class="tile"><span class="ic"><svg class="ico"><use href="#i-doc"/></svg></span><h3>郵報 The Daily</h3><p>官方已改電子版，連船上 Wi-Fi 免費看；7F 接待處可能還有紙本（不送房）</p></div>
-    <div class="tile"><span class="ic"><svg class="ico"><use href="#i-card"/></svg></span><h3>付費</h3><p>藍湖美食（叻沙、牛肉麵，近 24 小時）、Umi Uma 日料、卡拉 OK、賭場（港幣）、免稅店</p></div>
-  </div>
-
-  <div class="sub"><svg class="ico"><use href="#i-food"/></svg>免費餐廳時間（參考時間，以郵報為準；靠港日會調整）</div>
-  <div class="card">
-    <div class="gantt">
-      <div class="g-row"><div class="n">星夢<small>6F 中式套餐</small></div><div class="g-track" role="img" aria-label="星夢：早餐 07:00–09:30、午餐 11:30–14:00、晚餐 17:30–20:30">
-        <i class="m1" style="left:5.26%;width:13.16%"></i><i class="m2" style="left:28.95%;width:13.16%"></i><i class="m3" style="left:60.53%;width:15.79%"></i></div></div>
-      <div class="g-row"><div class="n">百味軒<small>6F 西式套餐</small></div><div class="g-track" role="img" aria-label="百味軒：早餐 07:30–10:00、午餐 11:30–14:00、晚餐 17:30–21:00">
-        <i class="m1" style="left:7.89%;width:13.16%"></i><i class="m2" style="left:28.95%;width:13.16%"></i><i class="m3" style="left:60.53%;width:18.42%"></i></div></div>
-      <div class="g-row"><div class="n">麗都<small>12F 自助</small></div><div class="g-track" role="img" aria-label="麗都：早餐 07:00–10:00、午餐 12:00–14:00、晚餐 17:30–21:00、宵夜 23:00–01:00">
-        <i class="m1" style="left:5.26%;width:15.79%"></i><i class="m2" style="left:31.58%;width:10.53%"></i><i class="m3" style="left:60.53%;width:18.42%"></i><i class="m4" style="left:89.47%;width:10.53%"></i></div></div>
-    </div>
-    <div class="g-axis" aria-hidden="true"><span style="left:0%">06</span><span style="left:15.79%">09</span><span style="left:31.58%">12</span><span style="left:47.37%">15</span><span style="left:63.16%">18</span><span style="left:78.95%">21</span><span style="left:94.74%">24</span></div>
-    <div class="g-legend"><span><i class="m1"></i>早餐</span><span><i class="m2"></i>午餐</span><span><i class="m3"></i>晚餐</span><span><i class="m4"></i>宵夜</span></div>
-    <details style="margin-top:10px"><summary class="small" style="color:var(--accent);cursor:pointer">看精確時間</summary>
-      <p class="small" style="margin-top:6px">星夢 07:00–09:30／11:30–14:00／17:30–20:30<br>百味軒 07:30–10:00／11:30–14:00／17:30–21:00<br>麗都 07:00–10:00／12:00–14:00／17:30–21:00／宵夜 23:00–01:00</p>
-    </details>
-    <p class="small muted" style="margin-top:8px">開餐時最擠，收餐前約 1 小時去較快</p>
   </div>
 </section>
 
@@ -803,7 +831,7 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
 </section>
 </main>
 
-<footer>v3.0・2026/10/06 更新・實際以船上日報 The Daily 與現場公告為準</footer>
+<footer>v3.1・2026/10/06 更新・實際以船上日報 The Daily 與現場公告為準</footer>
 </div>
 
 <script>
@@ -819,7 +847,7 @@ footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
     if (get(cb.id) === '1') cb.checked = true;
     cb.addEventListener('change', function(){ set(cb.id, cb.checked ? '1' : '0'); });
   });
-  ['tz', 'fee', 'day', 'plan'].forEach(function(name){
+  ['tz', 'fee', 'day', 'plan', 'act'].forEach(function(name){
     var saved = get('radio-' + name);
     var el = saved && document.getElementById(saved);
     if (el && el.name === name) el.checked = true;
